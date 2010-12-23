@@ -7,6 +7,22 @@ TimeCounter.prototype = {
   
   pendingTimeoutId: -1,
   
+  updateRunButton: function tc_updateRunButton() {
+    if (this.secondsLeft <= 0) {
+      // hide the pause/run button
+      $("input.runButtonClass").toggle(false);
+      return;
+    } else {
+      $("input.runButtonClass").toggle(true);
+    }
+    
+    if (this.pendingTimeoutId < 0) {
+      $("input.runButtonClass").val("Run");
+    } else {
+      $("input.runButtonClass").val("Pause");
+    }
+  }, 
+
   toggleRunState: function tc_toggleRunState() {
     if (this.pendingTimeoutId < 0) {
       this.pendingTimeoutId = setTimeout(counter.update, 1000);
@@ -46,6 +62,10 @@ TimeCounter.prototype = {
     if (counter.secondsLeft == 0) {
       // change to red
       $("body").css("background-color", "#ff0000");
+
+      // hide the pause/run button
+      counter.updateRunButton();
+
     } else {
       counter.pendingTimeoutId = setTimeout(counter.update, 1000);
     }
@@ -65,11 +85,13 @@ $(document).ready(function(){
   $("input.reset15ButtonClass").click(function() {
     counter.secondsLeft = 60 * 15;
     counter.updateInputValue();
+    counter.updateRunButton();
   });
 
   $("input.reset25ButtonClass").click(function() {
     counter.secondsLeft = 60 * 25;
     counter.updateInputValue();
+    counter.updateRunButton();
   });
   
   $("input.timeClass").change(function() {

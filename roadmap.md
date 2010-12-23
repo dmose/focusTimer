@@ -15,7 +15,7 @@
 
 #### 0.2
 
-  * hide pause/run button at 0:00, reset other times
+  * <strike>hide pause/run button at 0:00, reset other times</strike>
   * get small windowsize working
   * theme buttons 
   * checkin fluidapp config
