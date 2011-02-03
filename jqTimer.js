@@ -76,6 +76,10 @@ var counter = new TimeCounter();
 
 $(document).ready(function(){
 
+  $("input:button").button();
+  $("input.ui-button").css("padding", "0.3em 0.7em");
+  $(".ui-widget").css("font-size", "0.7em");
+
   counter.updateInputValue();
   
   $("input.runButtonClass").click(function() {
