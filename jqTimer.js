@@ -47,7 +47,7 @@ TimeCounter.prototype = {
   },
 
   updateInputValue: function tc_updateInputValue() {
-    $("body").css("background-color", "#ffffff");
+    $("body, input:text").css("background-color", "#66cc66");
     $("input.timeClass").val(this.toString());
   },
   
