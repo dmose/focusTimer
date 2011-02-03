@@ -82,7 +82,7 @@ $(document).ready(function(){
   $(".ui-widget").css("font-size", "0.7em");
 
   // for some reason, fluid.app adds a bunch of extraneous space that we need
-  // to get rid of, and sizeToContent() doesn't do much, so...
+  // to get rid of, and sizeToContent() doesn't seem to fix it, so...
   resizeTo(150, 60);
   
   counter.updateInputValue();

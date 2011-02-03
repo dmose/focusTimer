@@ -23,17 +23,21 @@
   * <strike>get small window size working in fluidapp</strike>
     
 #### 0.3
-  * checkin fluidapp config  
-  * test download/install experience 
-    
-#### 0.4
-  * overhaul theme
-  * port to chromeless also?
+  * checkin fluidapp config
+  * write packaging script
+  * create download page  
+  * test download/install experience
+  * blog
 
+#### 0.4
+  * port to commonjs module (for jetpack, chromeless use)
+  * overhaul theme
+  
 #### 0.5
+  * port to chromeless
   * add one-time snooze button
   * fade colors 
-
+  
 #### 0.6
   * refactor away bad abstractions (use jQuery timer plugin?)
   * investigate HTML5 desktop notification on expiration
