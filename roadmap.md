@@ -18,7 +18,7 @@
   * <strike>hide pause/run button at 0:00, reset other times</strike>
   * <strike>theme buttons</strike>
   * <strike>trim down font sizes</strike>
-  * fix pause button not resetting
+  * "reset to X" after time expires leaves side button saying "pause" not "run"
   
 #### 0.3
   * theme whole window
