@@ -61,7 +61,7 @@ TimeCounter.prototype = {
   
     if (counter.secondsLeft == 0) {
       // change to red
-      $("body").css("background-color", "#ff0000");
+      $("body, input:text").css("background-color", "#ff0000");
 
       // hide the pause/run button
       counter.updateRunButton();
