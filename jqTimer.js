@@ -64,6 +64,7 @@ TimeCounter.prototype = {
       $("body, input:text").css("background-color", "#ff0000");
 
       // hide the pause/run button
+      counter.pendingTimeoutId = -1; // used internally to title button; ick
       counter.updateRunButton();
 
     } else {
@@ -80,6 +81,10 @@ $(document).ready(function(){
   $("input.ui-button").css("padding", "0.3em 0.7em");
   $(".ui-widget").css("font-size", "0.7em");
 
+  // for some reason, fluid.app adds a bunch of extraneous space that we need
+  // to get rid of, and sizeToContent() doesn't do much, so...
+  resizeTo(150, 60);
+  
   counter.updateInputValue();
   
   $("input.runButtonClass").click(function() {

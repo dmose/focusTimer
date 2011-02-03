@@ -18,21 +18,23 @@
   * <strike>hide pause/run button at 0:00, reset other times</strike>
   * <strike>theme buttons</strike>
   * <strike>trim down font sizes</strike>
-  * "reset to X" after time expires leaves side button saying "pause" not "run"
-  
+  * <strike>"reset to X" after time expires leaves side button saying "pause"
+    not "run"</strike>
+  * <strike>get small window size working in fluidapp</strike>
+    
 #### 0.3
-  * theme whole window
-  * tune aesthetics
-  * get small window size working
-  * checkin fluidapp config
+  * checkin fluidapp config  
   * test download/install experience 
-  
+    
 #### 0.4
+  * overhaul theme
+  * port to chromeless also?
+
+#### 0.5
   * add one-time snooze button
   * fade colors 
-  * port to chromeless?
-  
-#### 0.5
+
+#### 0.6
   * refactor away bad abstractions (use jQuery timer plugin?)
   * investigate HTML5 desktop notification on expiration
   * update irregularly
