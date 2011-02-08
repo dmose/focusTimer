@@ -21,24 +21,30 @@
   * <strike>"reset to X" after time expires leaves side button saying "pause"
     not "run"</strike>
   * <strike>get small window size working in fluidapp</strike>
-    
+     
 #### 0.3
+  * <strike>change color to white when paused</strike>
+  * find a timer icon
   * checkin fluidapp config
   * write packaging script
   * create download page  
   * test download/install experience
+  * make viewable by github?
+  * figure out how to replace <strike> in markdown
+  * rename focusTimer
   * blog
 
 #### 0.4
   * port to commonjs module (for jetpack, chromeless use)
+  * refactor away bad abstractions (use jQuery timer plugin?)
   * overhaul theme
-  
+      
 #### 0.5
   * port to chromeless
   * add one-time snooze button
   * fade colors 
   
 #### 0.6
-  * refactor away bad abstractions (use jQuery timer plugin?)
   * investigate HTML5 desktop notification on expiration
   * update irregularly
+  * get rid of one white pixel around input box

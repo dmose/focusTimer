@@ -18,8 +18,10 @@ TimeCounter.prototype = {
     
     if (this.pendingTimeoutId < 0) {
       $("input.runButtonClass").val("Run");
+      $("body, input:text").css("background-color", "#bbbbbb");
     } else {
       $("input.runButtonClass").val("Pause");
+      $("body, input:text").css("background-color", "#66cc66");
     }
   }, 
 
@@ -27,10 +29,12 @@ TimeCounter.prototype = {
     if (this.pendingTimeoutId < 0) {
       this.pendingTimeoutId = setTimeout(counter.update, 1000);
       $("input.runButtonClass").val("Pause");
+      $("body, input:text").css("background-color", "#66cc66");
     } else {
       clearTimeout(this.pendingTimeoutId);
       this.pendingTimeoutId = -1;
       $("input.runButtonClass").val("Run");
+      $("body, input:text").css("background-color", "#bbbbbb");
     } 
   },
   
@@ -47,7 +51,7 @@ TimeCounter.prototype = {
   },
 
   updateInputValue: function tc_updateInputValue() {
-    $("body, input:text").css("background-color", "#66cc66");
+    this.updateRunButton();
     $("input.timeClass").val(this.toString());
   },
   
@@ -83,8 +87,13 @@ $(document).ready(function(){
 
   // for some reason, fluid.app adds a bunch of extraneous space that we need
   // to get rid of, and sizeToContent() doesn't seem to fix it, so...
-  resizeTo(150, 60);
-  
+  if ("fluid" in window) {
+    resizeTo(150, 60);
+  } else {
+    $("div.timerDivClass").css("width", "150px");
+    $("div.timerDivClass").css("height", "60px");
+    
+  }
   counter.updateInputValue();
   
   $("input.runButtonClass").click(function() {
