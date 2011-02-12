@@ -24,7 +24,9 @@
      
 #### 0.3
   * <strike>change color to white when paused</strike>
-  * find a timer icon
+  * find a timer icon, options:
+  ** http://www.softicons.com/free-icons/web-icons/light-grey-square-icons-by-axialis-team/clock-icon
+  ** http://www.softicons.com/free-icons/toolbar-icons/48x48-free-time-icons-by-aha-soft/time-tracker-icon
   * checkin fluidapp config
   * write packaging script
   * create download page  
@@ -45,6 +47,6 @@
   * fade colors 
   
 #### 0.6
-  * investigate HTML5 desktop notification on expiration
+  * fix fluid growl notifier on expiration; investigate HTML5 desktop notification
   * update irregularly
   * get rid of one white pixel around input box

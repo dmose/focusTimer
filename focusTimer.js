@@ -3,12 +3,12 @@ var defaultMins = 15;
 function TimeCounter() {
 }
 TimeCounter.prototype = {
-  secondsLeft: defaultMins * 60,
+  _secondsLeft: defaultMins * 60,
   
   pendingTimeoutId: -1,
   
   updateRunButton: function tc_updateRunButton() {
-    if (this.secondsLeft <= 0) {
+    if (this._secondsLeft <= 0) {
       // hide the pause/run button
       $("input.runButtonClass").toggle(false);
       return;
@@ -25,9 +25,15 @@ TimeCounter.prototype = {
     }
   }, 
 
+  resetTo: function tc_resetTo(seconds) {
+    this._secondsLeft = seconds;
+    this.updateInputValue();
+    this.updateRunButton();
+  },
+  
   toggleRunState: function tc_toggleRunState() {
     if (this.pendingTimeoutId < 0) {
-      this.pendingTimeoutId = setTimeout(counter.update, 1000);
+      this.pendingTimeoutId = setTimeout(this.update, 1000);
       $("input.runButtonClass").val("Pause");
       $("body, input:text").css("background-color", "#66cc66");
     } else {
@@ -39,7 +45,7 @@ TimeCounter.prototype = {
   },
   
   toString: function tc_toString(){
-    var seconds = this.secondsLeft % 60;
+    var seconds = this._secondsLeft % 60;
     if (seconds < 10) {
       var secString = "0" + seconds.toString();
     }
@@ -47,7 +53,7 @@ TimeCounter.prototype = {
       secString = seconds.toString();
     }
     
-    return Math.floor(this.secondsLeft / 60) + ":" + secString;
+    return Math.floor(this._secondsLeft / 60) + ":" + secString;
   },
 
   updateInputValue: function tc_updateInputValue() {
@@ -59,7 +65,7 @@ TimeCounter.prototype = {
   // setTimeout providing a separate 'this' object.  Refactoring needed.
   update: function tc_timerUpdate() {
     // decrement seconds remaining
-    counter.secondsLeft -= 1;
+    counter._secondsLeft -= 1;
 
     counter.updateInputValue();
   
@@ -71,6 +77,17 @@ TimeCounter.prototype = {
       counter.pendingTimeoutId = -1; // used internally to title button; ick
       counter.updateRunButton();
 
+      if ("fluid" in window) {
+        fluid.showGrowlNotification({
+          title: "timer expired", 
+          description: "",
+          priority: 1, 
+          sticky: false,
+          identifier: "foo"// ,
+          // onclick: callbackFunc,
+          // icon: imgEl // or URL string
+          });
+      }
     } else {
       counter.pendingTimeoutId = setTimeout(counter.update, 1000);
     }
@@ -92,7 +109,6 @@ $(document).ready(function(){
   } else {
     $("div.timerDivClass").css("width", "150px");
     $("div.timerDivClass").css("height", "60px");
-    
   }
   counter.updateInputValue();
   
@@ -101,20 +117,15 @@ $(document).ready(function(){
   });
   
   $("input.reset15ButtonClass").click(function() {
-    counter.secondsLeft = 60 * 15;
-    counter.updateInputValue();
-    counter.updateRunButton();
+    counter.resetTo(60 * 15);
   });
 
   $("input.reset25ButtonClass").click(function() {
-    counter.secondsLeft = 60 * 25;
-    counter.updateInputValue();
-    counter.updateRunButton();
+    counter.resetTo(60 * 25);
   });
   
   $("input.timeClass").change(function() {
-    counter.secondsLeft = $("input.timeClass").val() * 60;
-    counter.updateInputValue();
+    counter.resetTo($("input.timeClass").val() * 60);
   });
 });
 
