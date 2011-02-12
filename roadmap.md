@@ -32,7 +32,7 @@
   * create download page  
   * test download/install experience
   * make viewable by github?
-  * figure out how to replace <strike> in markdown
+  * figure out how to make <strike> work in markdown
   * rename focusTimer
   * blog
 
