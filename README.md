@@ -12,3 +12,13 @@ quick-n-dirty prototype.
 
 Dan Mosedale  
 dmose@meer.net
+
+Credits:
+* Application icon by [Aha-Soft](http://www.aha-soft.com/), via
+  http://www.small-icons.com/stock-icons/48x48-free-time-icons.htm.
+  Licensed under the [Creative Commons Attribution-Share Alike 3.0
+  License](http://creativecommons.org/licenses/by-sa/3.0/).
+  
+* [jQuery](http://jquery.com/) & [jQuery UI](http://jqueryui.com/), licensed
+  under the MIT license.
+  

@@ -24,10 +24,10 @@
      
 #### 0.3
   * <strike>change color to white when paused</strike>
-  * find a timer icon, options:
-  ** http://www.softicons.com/free-icons/web-icons/light-grey-square-icons-by-axialis-team/clock-icon
-  ** http://www.softicons.com/free-icons/toolbar-icons/48x48-free-time-icons-by-aha-soft/time-tracker-icon
+  * <strike>find a timer icon</strike>
   * checkin fluidapp config
+  * checkin timer icon
+  * build fluidium
   * write packaging script
   * create download page  
   * test download/install experience
