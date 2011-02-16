@@ -5,7 +5,7 @@ function TimeCounter() {
 TimeCounter.prototype = {
   _secondsLeft: defaultMins * 60,
   
-  pendingTimeoutId: -1,
+  _pendingTimeoutId: -1,
   
   updateRunButton: function tc_updateRunButton() {
     if (this._secondsLeft <= 0) {
@@ -16,7 +16,7 @@ TimeCounter.prototype = {
       $("input.runButtonClass").toggle(true);
     }
     
-    if (this.pendingTimeoutId < 0) {
+    if (this._pendingTimeoutId < 0) {
       $("input.runButtonClass").val("Run");
       $("body, input:text").css("background-color", "#bbbbbb");
     } else {
@@ -32,13 +32,13 @@ TimeCounter.prototype = {
   },
   
   toggleRunState: function tc_toggleRunState() {
-    if (this.pendingTimeoutId < 0) {
-      this.pendingTimeoutId = setTimeout(this.update, 1000);
+    if (this._pendingTimeoutId < 0) {
+      this._pendingTimeoutId = setTimeout(this.update, 1000);
       $("input.runButtonClass").val("Pause");
       $("body, input:text").css("background-color", "#66cc66");
     } else {
-      clearTimeout(this.pendingTimeoutId);
-      this.pendingTimeoutId = -1;
+      clearTimeout(this._pendingTimeoutId);
+      this._pendingTimeoutId = -1;
       $("input.runButtonClass").val("Run");
       $("body, input:text").css("background-color", "#bbbbbb");
     } 
