@@ -33,7 +33,6 @@
   * <strike>fix up markdown on README page</strike>
   * make viewable by github  
   * make build solution for chromeless bits
-  * investigate chromeless solution 
   * create download page  
   * test download/install experience
   * write packaging script
@@ -45,6 +44,7 @@
   ** opacity of around 75%
   ** make window always-on-top
   ** make window appear in all spaces
+  ** explicit default height & width
   * port to commonjs module (for jetpack, chromeless use)
   * refactor away bad abstractions (use jQuery timer plugin?)
   * overhaul theme
