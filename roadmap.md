@@ -29,26 +29,27 @@
   * <strike>figure out how to generate packaged app from fluidium</strike>
   * <strike>checkin timer icon</strike>
   * <strike>write up hand-instructions for creating fluid app</strike>
-  * rename focusTimer
+  * <strike>rename focusTimer</strike>
+  * <strike>fix up markdown on README page</strike>
   * make viewable by github  
   * make build solution for chromeless bits
   * investigate chromeless solution 
   * create download page  
   * test download/install experience
+  * write packaging script
   * make screencast
   * blog
   
-#### 0.3.5
-  * figure out how to make <strike> work in markdown
-  * write packaging script
-  
-#### 0.4
+#### Possible upcoming features
+  * look into some features we got for free from Fluid:
+  ** opacity of around 75%
+  ** make window always-on-top
+  ** make window appear in all spaces
   * port to commonjs module (for jetpack, chromeless use)
   * refactor away bad abstractions (use jQuery timer plugin?)
   * overhaul theme
       
 #### 0.5
-  * port to chromeless
   * add one-time snooze button
   * fade colors 
   
