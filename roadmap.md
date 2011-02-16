@@ -28,16 +28,17 @@
   * <strike>build fluidium</strike>
   * <strike>figure out how to generate packaged app from fluidium</strike>
   * <strike>checkin timer icon</strike>
+  * <strike>write up hand-instructions for creating fluid app</strike>
+  * rename focusTimer
+  * make viewable by github  
+  * make build solution for chromeless bits
   * investigate chromeless solution 
-  * build model for pushing to redpuma.net
-  * write up hand-instructions for creating fluid app
   * create download page  
   * test download/install experience
-  * rename focusTimer
+  * make screencast
   * blog
-
+  
 #### 0.3.5
-  * make viewable by github?
   * figure out how to make <strike> work in markdown
   * write packaging script
   

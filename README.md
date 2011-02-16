@@ -1,5 +1,5 @@
-jqTimer
-=======
+focusTimer
+==========
 
 A very simple timer webapp
 
