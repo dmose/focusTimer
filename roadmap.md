@@ -25,17 +25,22 @@
 #### 0.3
   * <strike>change color to white when paused</strike>
   * <strike>find a timer icon</strike>
-  * checkin fluidapp config
-  * checkin timer icon
-  * build fluidium
-  * write packaging script
+  * <strike>build fluidium</strike>
+  * <strike>figure out how to generate packaged app from fluidium</strike>
+  * <strike>checkin timer icon</strike>
+  * investigate chromeless solution 
+  * build model for pushing to redpuma.net
+  * write up hand-instructions for creating fluid app
   * create download page  
   * test download/install experience
-  * make viewable by github?
-  * figure out how to make <strike> work in markdown
   * rename focusTimer
   * blog
 
+#### 0.3.5
+  * make viewable by github?
+  * figure out how to make <strike> work in markdown
+  * write packaging script
+  
 #### 0.4
   * port to commonjs module (for jetpack, chromeless use)
   * refactor away bad abstractions (use jQuery timer plugin?)

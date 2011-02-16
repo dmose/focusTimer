@@ -69,12 +69,12 @@ TimeCounter.prototype = {
 
     counter.updateInputValue();
   
-    if (counter.secondsLeft == 0) {
+    if (counter._secondsLeft == 0) {
       // change to red
       $("body, input:text").css("background-color", "#ff0000");
 
       // hide the pause/run button
-      counter.pendingTimeoutId = -1; // used internally to title button; ick
+      counter._pendingTimeoutId = -1; // used internally to title button; ick
       counter.updateRunButton();
 
       if ("fluid" in window) {
@@ -89,7 +89,7 @@ TimeCounter.prototype = {
           });
       }
     } else {
-      counter.pendingTimeoutId = setTimeout(counter.update, 1000);
+      counter._pendingTimeoutId = setTimeout(counter.update, 1000);
     }
   } 
 };
