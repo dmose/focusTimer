@@ -1,5 +1,8 @@
 ### ROADMAP
 
+This is nominally a roadmap, but, really, it's just my evolving TODO list and
+its history.
+
 #### 0.1
 
   * <strike>figure out use environment</strike>
@@ -32,24 +35,30 @@
   * <strike>rename focusTimer</strike>
   * <strike>fix up markdown on README page</strike>
   * make viewable by github  
-  * make build solution for chromeless bits
-  * create download page  
-  * test download/install experience
-  * write packaging script
-  * make screencast
-  * blog
+  * work out packaging strategy
+  * create main github wiki page
+  * write inverse-pyramid blog post
+  * take screencast or screen shots
+  * draft blog post
   
 #### Possible upcoming features
+
+  * build chromeless-based OS X package
+  * test download/install experience
+
+###
   * look into some features we got for free from Fluid:
   ** opacity of around 75%
   ** make window always-on-top
   ** make window appear in all spaces
   ** explicit default height & width
+
+####  cleanup
   * port to commonjs module (for jetpack, chromeless use)
   * refactor away bad abstractions (use jQuery timer plugin?)
   * overhaul theme
-      
-#### 0.5
+
+#### features      
   * add one-time snooze button
   * fade colors 
   

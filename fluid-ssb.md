@@ -1,4 +1,11 @@
-Here's a quick-n-dirty writeup about how to use make a Fluid app of focusTimer.  It turns out that the open-source version of Fluid / Fluidium can't seem to allow the window to small enough, so now that chromeless is more mature than when I started this, I'm mostly focusing on them for the moment.
+Here's a quick-n-dirty writeup about how to make a Fluid app of focusTimer.
+It turns out that the open-source version of Fluid / Fluidium can't seem to
+make the window small enough for a good user experience, so for now, the best
+UX can be had by following these instructions to create a Fluid app.
+
+Now that chromeless is more mature than when I started this, I've got
+focusTimer bootstrapped to work with it, but the UX needs some work there too,
+so for now I'm releasing as is.
 
 * download & install Fluid.app
 * start Fluid.app
@@ -22,3 +29,7 @@ Window Opacity: somewhere near 75%
 
 Spaces Behavior: Windows Appear in all Spaces
 When this SSB is not frontmost: Windows are draggable from anywhere
+
+* Quit out of focusTimer
+* Start focusTimer
+* From the View menu, select "Hide Status Bar"
