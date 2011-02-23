@@ -11,9 +11,9 @@ so for now I'm releasing as is.
 * start Fluid.app
 * fill out the page like this:
 
- URL: http://dmose.github.com/focusTimer/
- Name: focusTimer
- Icon: http://dmose.github.com/focusTimer/time-tracker.png
+ * URL: http://dmose.github.com/focusTimer/
+ * Name: focusTimer
+ * Icon: http://dmose.github.com/focusTimer/time-tracker.png
 
 * press the Create button
 * after creation completes successfully, click the Launch Now button
