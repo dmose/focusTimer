@@ -15,7 +15,7 @@ URL: http://dmose.github.com/focusTimer/
 
 Name: focusTimer
 
-Icon: http://dmose.github.com/focusTimer/time-tracker.png
+Icon: https://github.com/dmose/focusTimer/raw/e1c8d6219816dcd6de84edb5c88aee667a82aac0/time-tracker.png
 
 * press the Create button
 * after creation completes successfully, click the Launch Now button
