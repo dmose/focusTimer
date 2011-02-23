@@ -1,3 +1,6 @@
+// Note that this qualifies in a number of ways as a Prototype.
+// Which is to say that code cleanup is left as an exercise for the future.
+
 var defaultMins = 15;
 
 function TimeCounter() {
