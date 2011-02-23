@@ -1,11 +1,11 @@
 ### ROADMAP
 
-This is nominally a roadmap, but, really, it's just my evolving TODO list.
+This is nominally a roadmap, but, really, it's just an evolving TODO list.
+Anyone who wants to take a run at doing one of those these should feel free!
 
 #### features      
-  * get notification popups working
-  ** for Widgetify: fold in jetpack notifications for temporary impl of HTML5 API
-  ** for Fluid: HTML5 or native Fluid
+  * for Widgetify: fold in jetpack notifications for temporary impl of HTML5 API
+  * for Fluid: HTML5 or native Fluid
   * investigate simple notification audio
   
 #### open-web (Chromeless/Widgetify) features we got for free from Fluid:
