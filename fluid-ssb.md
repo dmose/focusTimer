@@ -1,6 +1,6 @@
 Here's a quick-n-dirty writeup about how to make a Fluid app of focusTimer.
-It turns out that the open-source version of Fluid / Fluidium can't seem to
-make the window small enough for a good user experience, so for now, the best
+It turns out that the open-source version fluidium (the one that it's permitted to create distributions from)
+can't seem to make the window small enough for a good user experience, so for now, the best
 UX can be had by following these instructions to create a Fluid app.
 
 Now that chromeless is more mature than when I started this, I've got
