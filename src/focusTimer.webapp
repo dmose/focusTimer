@@ -1,0 +1,21 @@
+{  
+      "version": "0.3",  
+      "name": "focusTimer",  
+      "description": "Simple standalone timer designed for short periods of focus",  
+      "icons": {  
+        "48": "/s/focusTimer/src/favicon.ico"
+      },
+      
+      "launch_path": "/s/focusTimer/src/index.html",
+      
+      "widget": {  
+        "path": "/s/focusTimer/src/index.html",  
+        "width": 150,  
+        "height": 60  
+      },  
+      "developer": {  
+        "name": "Dan Mosedale",  
+        "url": "http://redpuma.net/blog/"  
+      },  
+      "installs_allowed_from": ["*"]  
+}
