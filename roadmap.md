@@ -4,6 +4,7 @@ This is nominally a roadmap, but, really, it's just an evolving TODO list.
 Anyone who wants to take a run at doing one of those these should feel free!
 
 #### open web app features we got for free from Fluid:
+  * make it launchable from localhost & github
   * explicit default height & width
   * opacity of around 75%
   * make window always-on-top
@@ -12,7 +13,8 @@ Anyone who wants to take a run at doing one of those these should feel free!
 #### features      
   * investigate simple notification audio
   * for Fluid: HTML5 or native Fluid
-
+  * make responsive for mobile
+  
 #### misc features
   * add one-time snooze button
   * fade colors 
