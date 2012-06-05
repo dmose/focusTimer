@@ -12,22 +12,16 @@
 
 <body>
   <script>
-    console.log("script invoked");
-    
     function onsuccess() {
-      console.log("focusTimer successfully installed");
     }
     
     function onerror(error) {
+      /*global console: false */      
       console.log("focusTimer install failed: " + error.message +
       "(" + error.code + ")");
     }
     
-    console.log("about to call install");
-    
-    navigator.mozApps.install("focusTimer.webapp", {}, onsuccess, onerror);
-    
-    console.log("install called");
+    navigator.mozApps.install("http://localhost/s/focusTimer/src/focusTimer.webapp", {}, onsuccess, onerror);
   </script>
 </body>
 
