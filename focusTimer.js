@@ -1,4 +1,9 @@
+/*global $: false, window: false, fluid: false */
+// Note that this qualifies in a number of ways as a Prototype.
+// Which is to say that code cleanup is left as an exercise for the future.
+
 var defaultMins = 15;
+var counter;
 
 function TimeCounter() {
 }
@@ -46,10 +51,10 @@ TimeCounter.prototype = {
   
   toString: function tc_toString(){
     var seconds = this._secondsLeft % 60;
+    var secString;
     if (seconds < 10) {
-      var secString = "0" + seconds.toString();
-    }
-    else {
+      secString = "0" + seconds.toString();
+    } else {
       secString = seconds.toString();
     }
     
@@ -69,7 +74,7 @@ TimeCounter.prototype = {
 
     counter.updateInputValue();
   
-    if (counter._secondsLeft == 0) {
+    if (counter._secondsLeft === 0) {
       // change to red
       $("body, input:text").css("background-color", "#ff0000");
 
@@ -93,8 +98,7 @@ TimeCounter.prototype = {
     }
   } 
 };
-
-var counter = new TimeCounter();
+counter = new TimeCounter();
 
 $(document).ready(function(){
 
@@ -104,7 +108,9 @@ $(document).ready(function(){
 
   // for some reason, fluid.app adds a bunch of extraneous space that we need
   // to get rid of, and sizeToContent() doesn't seem to fix it, so...
-  if ("fluid" in window) {
+  
+  // XXX true added so make things work in .webapp context
+  if (true || "fluid" in window) {
     resizeTo(150, 60);
   } else {
     $("div.timerDivClass").css("width", "150px");
