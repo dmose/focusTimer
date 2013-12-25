@@ -1,5 +1,9 @@
 {
   "name": "focustimer",
+  "repository":{
+    "type": "git",
+    "url": "http://github.com/dmose/focusTimer.git"
+  },
   "version": "0.3.1",
   "dependencies": {},
   "devDependencies": {
