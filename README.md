@@ -21,4 +21,4 @@ Credits:
   License](http://creativecommons.org/licenses/by-sa/3.0/).  
 * [jQuery](http://jquery.com/) & [jQuery UI](http://jqueryui.com/), licensed
   under the MIT license.
-  
+* Yeoman Webapp Generator and all the stuff that comes with it

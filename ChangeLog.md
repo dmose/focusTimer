@@ -2,6 +2,9 @@
 
 Really, just the todo list that I've used as I've worked on each release.
 
+#### 0.3.1
+  * <strike>Switch to yeoman-based build structure & system.</strike>
+
 #### 0.3
   * <strike>change color to white when paused</strike>
   * <strike>find a timer icon</strike>
@@ -11,10 +14,6 @@ Really, just the todo list that I've used as I've worked on each release.
   * <strike>write up hand-instructions for creating fluid app</strike>
   * <strike>rename focusTimer</strike>
   * <strike>fix up markdown on README page</strike>
-  * make viewable by github  
-  * work out packaging strategy
-  * create main github wiki page
-  * write inverse-pyramid blog post
 
 #### 0.2
 
