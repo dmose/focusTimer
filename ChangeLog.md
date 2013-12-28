@@ -4,6 +4,7 @@ Really, just the todo list that I've used as I've worked on each release.
 
 #### 0.3.1
   * <strike>Switch to yeoman-based build structure & system.</strike>
+  * <strike>Hook up Google Analytics</strike>
 
 #### 0.3
   * <strike>change color to white when paused</strike>

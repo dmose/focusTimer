@@ -4,13 +4,13 @@ This is nominally a roadmap, but, really, it's just an evolving TODO list.
 Anyone who wants to take a run at doing one of those these should feel free!
 
 #### cleanup
-  * update jQuery & jQuery UI versions
-  * get rid of one white pixel around input box
+  * use js-fixtures (or Anton's thing?) to TDD backbone views
   * TDD to Backbone
 
-#### features      
+#### features
   * explore new toolkits
   * overhaul theme & fonts
+  * consider transitions
   * review Fluid APIs
   * simple notification audio
   * port to B2G
