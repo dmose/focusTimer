@@ -1,9 +1,12 @@
 {
   "name": "focustimer",
-  "version": "0.3.1",
+  "version": "0.0.0",
   "dependencies": {
-    "jquery": "~1.10.2",
-    "jqueryui": ">=1.8.7"
+    "sass-bootstrap": "~3.0.0",
+    "jquery": "~1.9.0",
+    "underscore": "~1.4.3",
+    "backbone": "~1.0.0",
+    "modernizr": "~2.6.2"
   },
   "devDependencies": {}
 }
