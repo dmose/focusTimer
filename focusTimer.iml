@@ -6,6 +6,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Node.js Dependencies for focusTimer" level="project" />
+    <orderEntry type="library" name="sass-stdlib" level="application" />
+    <orderEntry type="library" name="chai" level="project" />
+    <orderEntry type="library" name="mocha" level="project" />
   </component>
 </module>
 
