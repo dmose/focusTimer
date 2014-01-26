@@ -29,15 +29,6 @@
   });
 
   describe('focusTimer.Utils', function() {
-    describe('IntervalTime', function() {
-      describe('constructor', function () {
-        it('should be an instanceof Number', function() {
-          var it = new focusTimer.Utils.IntervalTime;
-
-          expect(it).to.be.an.instanceOf(Number);
-        });
-
-      });
     });
   });
 })();
