@@ -1,4 +1,4 @@
-/* global describe, it, beforeEach, afterEach, expect, focusTimer */
+/* global describe, it, beforeEach, afterEach, expect */
 
 (function () {
   'use strict';
@@ -28,7 +28,6 @@
     });
   });
 
-  describe('focusTimer.Utils', function() {
-    });
-  });
+  describe('focusTimer.Utils');
+
 })();
