@@ -6,12 +6,13 @@ describe('Timer View', function () {
   beforeEach(function () {
     $('#fixtures').append('<div id="timer-view"></div>');
 
-    this.model = {
-      on: function () {}
-    };
-
     this.timeLeft = 3 * 60;
-    this.model.attributes = { state: 'stopped', timeLeft: this.timeLeft };
+
+    this.model = {
+      attributes: { state: 'stopped', timeLeft: this.timeLeft },
+      on: function () {},
+      get: function (key) {return this.attributes[key];}
+    };
 
     this.timerView = new focusTimer.Views.TimerView({
       el: $('#timer-view').get()[0],
@@ -38,10 +39,24 @@ describe('Timer View', function () {
 
     describe('"click" on the #start-stop button', function () {
 
-      it('should call start on the model if the state is "stopped"',
+      it('should call start on the model if its state is "stopped"',
         function (done) {
           this.model.attributes.state = 'stopped';
           this.model.start = verify;
+          this.timerView.render();
+
+          $('#fixtures #start-stop').trigger('click');
+
+          function verify() {
+            expect(true).to.equal(true);
+            done();
+          }
+        });
+
+      it('should call stop on the model if its state is "running"',
+        function(done) {
+          this.model.attributes.state = 'running';
+          this.model.stop = verify;
           this.timerView.render();
 
           $('#fixtures #start-stop').trigger('click');

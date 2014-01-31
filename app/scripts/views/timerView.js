@@ -34,7 +34,14 @@ focusTimer.Views = focusTimer.Views || {};
     },
 
     _startStop: function (event) {
-      this.model.start();
+      var state = this.model.get('state');
+      if (state === 'stopped') {
+        this.model.start();
+      } else if (state === 'running') {
+        this.model.stop();
+      } else {
+        throw new Error('Unexpected model.state: ' + state);
+      }
     },
 
     render: function() {

@@ -35,6 +35,22 @@ describe('FocusTimer Model', function () {
     });
   });
 
+  describe('stop', function() {
+    it('should set the timer state to "stopped"', function() {
+      this.focusTimer.set('state', 'running');
+
+      this.focusTimer.stop();
+
+      expect(this.focusTimer.get('state')).to.equal('stopped');
+    });
+
+    it.skip('should cause a running timer to not change timeLeft at the end of the' +
+      ' next interval', function () {
+      // XXX needs sinon to test
+    });
+
+  });
+
   describe('#update', function() {
     it('should throw an Error if the state is not "running"', function() {
       this.focusTimer.set('state', 'stopped');

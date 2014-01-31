@@ -20,6 +20,11 @@ focusTimer.Models = focusTimer.Models || {};
       this._intervalTimer = window.setInterval(this.update.bind(this), 1000);
     },
 
+    stop: function() {
+      window.clearInterval(this._intervalTimer);
+      this.set('state', 'stopped');
+    },
+
     update: function() {
       if (this.get('state') !== 'running') {
         throw new Error('state must be set to "running" when update is called');
