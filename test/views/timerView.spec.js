@@ -39,7 +39,7 @@ describe('Timer View', function () {
 
       it('should call start on the model if the state is "stopped"',
         function (done) {
-          this.model.attributes.state = "stopped";
+          this.model.attributes.state = 'stopped';
           this.model.start = verify;
           this.timerView.render();
 
