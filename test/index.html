@@ -10,7 +10,10 @@
     <div id="mocha"></div>
     <div id="fixtures"></div>
     <script src="bower_components/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
+    <script>
+      /*global mocha */
+      mocha.setup('bdd');
+    </script>
     <script src="bower_components/chai/chai.js"></script>
     <script>
         var assert = chai.assert;
