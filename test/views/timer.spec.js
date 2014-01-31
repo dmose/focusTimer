@@ -36,12 +36,25 @@ describe('Timer View', function () {
       expect(this.timerView.render()).to.equal(this.timerView);
     });
 
-    it('should add an input with id #time-remaining to the #timer-view div',
+    it('should display a #time-remaining button in the #timer-view div',
       function () {
-        expect(this.timerView.render().$el.find('input#time-remaining').length)
-          .to.equal(1);
+        this.timerView.render();
+
+        expect(this.timerView.$('input#time-remaining').length).to.equal(1);
       }
     );
+
+    it('should display a #start-stop button with class btn', function() {
+      this.timerView.render();
+
+      expect(this.timerView.$('button#start-stop.btn').length).to.equal(1);
+    });
+
+    it('should display a label in the button', function() {
+      this.timerView.render();
+
+      expect(this.timerView.$('#start-stop label').length).to.equal(1);
+    });
 
     // XXX need formatting test here once we use durations, and the countdown
     // plugin

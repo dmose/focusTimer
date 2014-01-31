@@ -11,9 +11,13 @@ focusTimer.Views = focusTimer.Views || {};
 
     id: 'timer-view',
 
-    template: _.template(
-      ['<input id="time-remaining" value="<%= timeLeft %>">',
-       '</input>'].join('')),
+    template: _.template([
+      '<input id="time-remaining" value="<%= timeLeft %>">',
+      '  <button id="start-stop" class="btn">',
+      '    <label></label>',
+      '  </button>',
+      '</input>'
+    ].join('')),
 
     initialize: function() {
       this.listenTo(this.model, 'change', this.render);
