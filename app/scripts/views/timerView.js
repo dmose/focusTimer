@@ -14,13 +14,20 @@ focusTimer.Views = focusTimer.Views || {};
     template: _.template([
       '<input id="time-remaining" value="<%= timeLeft %>">',
       '  <button id="start-stop" class="btn">',
-      '    <label></label>',
+      '    <label class="<% print(this._getLabelClassForState(state)); %>">' +
+        '</label>',
       '  </button>',
       '</input>'
     ].join('')),
 
     initialize: function() {
       this.listenTo(this.model, 'change', this.render);
+    },
+
+    _getLabelClassForState: function (state) {
+      var classMap = { stopped: 'label-run' };
+
+      return classMap[state];
     },
 
     render: function() {

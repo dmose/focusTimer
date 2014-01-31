@@ -10,9 +10,12 @@ describe('Timer View', function () {
     _.extend(this.model, Backbone.Events);
 
     this.timeLeft = 3 * 60;
-    this.model.attributes = { timeLeft: this.timeLeft };
+    this.model.attributes = { state: 'stopped', timeLeft: this.timeLeft };
 
-    this.timerView = new focusTimer.Views.TimerView({model: this.model});
+    this.timerView = new focusTimer.Views.TimerView({
+      el: $('#timer-view').get()[0],
+      model: this.model
+    });
   });
 
   afterEach(function() {
@@ -54,6 +57,19 @@ describe('Timer View', function () {
       this.timerView.render();
 
       expect(this.timerView.$('#start-stop label').length).to.equal(1);
+    });
+
+    describe('label', function () {
+
+      it('should have class ".label-run" when the model state is "stopped"',
+      function() {
+        this.model.attributes.state = 'stopped';
+
+        this.timerView.render();
+
+        expect(this.timerView.$('#start-stop label').hasClass('label-run')).to.
+          equal(true);
+      });
     });
 
     // XXX need formatting test here once we use durations, and the countdown
