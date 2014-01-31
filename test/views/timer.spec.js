@@ -9,6 +9,9 @@ describe('Timer View', function () {
     this.model = {};
     _.extend(this.model, Backbone.Events);
 
+    this.timeLeft = 3 * 60;
+    this.model.attributes = { timeLeft: this.timeLeft };
+
     this.timerView = new focusTimer.Views.TimerView({model: this.model});
   });
 
@@ -40,6 +43,15 @@ describe('Timer View', function () {
       }
     );
 
+    // XXX need formatting test here once we use durations, and the countdown
+    // plugin
+    it('should set the value of the input to the time remaining', function() {
+      this.timerView.render();
+
+      var input = this.timerView.$el.find('#time-remaining');
+
+      expect(Number(input.prop('value'))).to.equal(this.timeLeft);
+    });
   });
 
 });

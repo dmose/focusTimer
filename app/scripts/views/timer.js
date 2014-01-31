@@ -12,14 +12,16 @@ focusTimer.Views = focusTimer.Views || {};
     id: 'timer-view',
 
     template: _.template(
-      ['<input id="time-remaining" type="text">'].join('')),
+      ['<input id="time-remaining" value="<%= timeLeft %>">',
+       '</input>'].join('')),
 
     initialize: function() {
       this.listenTo(this.model, 'change', this.render);
     },
 
     render: function() {
-      this.$el.html(this.template());
+      this.$el.html(this.template(this.model.attributes));
+
       return this;
     }
   });

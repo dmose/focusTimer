@@ -11,7 +11,7 @@ focusTimer.Models = focusTimer.Models || {};
 
     defaults: {
       'state': 'stopped',
-      'time-left': 25 * 60
+      'timeLeft': 25 * 60
     },
 
     start: function() {
@@ -24,11 +24,11 @@ focusTimer.Models = focusTimer.Models || {};
         throw new Error('state must be set to "running" when update is called');
       }
 
-      if (this.get('time-left') === 0) {
+      if (this.get('timeLeft') === 0) {
         this.set('state', 'expired');
       }
 
-      this.set('time-left', this.get('time-left') - 1);
+      this.set('timeLeft', this.get('timeLeft') - 1);
     },
 
     validate: function(attrs, options) {
