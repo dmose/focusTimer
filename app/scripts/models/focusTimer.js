@@ -17,6 +17,7 @@ focusTimer.Models = focusTimer.Models || {};
     start: function() {
       this.set('state', 'running');
       this.update();
+      this._intervalTimer = window.setInterval(this.update.bind(this), 1000);
     },
 
     update: function() {

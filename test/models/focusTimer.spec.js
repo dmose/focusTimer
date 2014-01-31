@@ -60,6 +60,13 @@ describe('FocusTimer Model', function () {
       expect(this.focusTimer.get('timeLeft')).to.equal(0);
     });
 
-    it('should set a timer to recurse after 1 second');
+    it.skip('should be called again after 1 second if the state is "running"',
+      function() {
+        this.focusTimer.set('state', 'running');
+
+        this.focusTimer.update();
+
+        // XXX wants Sinon timers to skip
+      });
   });
 });
