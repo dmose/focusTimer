@@ -4,11 +4,13 @@ This is nominally a roadmap, but, really, it's just an evolving TODO list.
 Anyone who wants to take a run at doing one of those these should feel free!
 
 #### cleanup
+
   * use js-fixtures (or Anton's thing?) to TDD backbone views
   * TDD to Backbone
   * explore polymer
 
 #### features
+  * make it work offline
   * explore bootstrap3
   * overhaul theme & fonts
   * consider transitions

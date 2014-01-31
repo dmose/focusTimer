@@ -2,6 +2,20 @@
 
 Really, just the todo list that I've used as I've worked on each release.
 
+#### 0.3.2
+  * Rewrite using TDD and the yeoman Backbone generator
+  ** <strike>Stand things up</strike>
+  ** <strike>Get Run button working</strike>
+  ** <strike>Get Stop button working</strike>
+  ** Implement Sinon.js tests
+  ** Implement parameterized defaults
+  ** Implement timer expiration behavior
+  ** Stand up Fluid.app version
+  ** dogfood!
+  ** Find/setup grunt task to auto-create Fluid.app local and remote versions
+  ** (Finish implementing UI)
+  ** (Finish styling UI)
+
 #### 0.3.1
   * <strike>Switch to yeoman-based build structure & system.</strike>
   * <strike>Hook up Google Analytics</strike>
