@@ -1,4 +1,4 @@
-/*global describe, afterEach, beforeEach, expect, it, focusTimer, Backbone, _ */
+/*global describe, afterEach, beforeEach, expect, it, focusTimer */
 
 describe('Timer View', function () {
   'use strict';
@@ -6,8 +6,9 @@ describe('Timer View', function () {
   beforeEach(function () {
     $('#fixtures').append('<div id="timer-view"></div>');
 
-    this.model = {};
-    _.extend(this.model, Backbone.Events);
+    this.model = {
+      on: function () {}
+    };
 
     this.timeLeft = 3 * 60;
     this.model.attributes = { state: 'stopped', timeLeft: this.timeLeft };
