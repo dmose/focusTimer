@@ -8,12 +8,15 @@ focusTimer.Views = focusTimer.Views || {};
   focusTimer.Views.TimerView = Backbone.View.extend({
 
     // JST['app/scripts/templates/timer.ejs']
+    events: {
+      'click #start-stop': '_startStop'
+    },
 
     id: 'timer-view',
 
     template: _.template([
-      '<input id="time-remaining" value="<%= timeLeft %>">',
-      '  <button id="start-stop" class="btn">',
+      '<input id="time-remaining" value="<%= timeLeft %>" class="input-sm">',
+      '  <button id="start-stop" class="btn btn-xs">',
       '    <label class="<% print(this._getLabelClassForState(state)); %>">' +
         '</label>',
       '  </button>',
@@ -25,9 +28,13 @@ focusTimer.Views = focusTimer.Views || {};
     },
 
     _getLabelClassForState: function (state) {
-      var classMap = { stopped: 'label-run' };
+      var classMap = { stopped: 'label-run', running: 'label-stop' };
 
       return classMap[state];
+    },
+
+    _startStop: function (event) {
+      this.model.start();
     },
 
     render: function() {
