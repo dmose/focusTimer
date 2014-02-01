@@ -9,11 +9,13 @@
 <body>
     <div id="mocha"></div>
     <div id="fixtures"></div>
+
     <script src="bower_components/mocha/mocha.js"></script>
     <script>
       /*global mocha */
       mocha.setup('bdd');
     </script>
+
     <script src="bower_components/chai/chai.js"></script>
     <script>
         var assert = chai.assert;
@@ -24,7 +26,8 @@
         window.focusTimer = {};
     </script>
 
-    <!-- dependencies go here; XXX hoist to backbone generator */ -->
+    <script src="bower_components/sinonjs/sinon.js"></script>
+
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>

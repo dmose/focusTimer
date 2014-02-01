@@ -1,4 +1,4 @@
-/*global describe, it, beforeEach, afterEach, expect */
+/*global describe, it, beforeEach, afterEach, expect, sinon */
 
 (function () {
   'use strict';
@@ -6,12 +6,12 @@
   describe('window.focusTimer', function () {
 
     beforeEach(function() {
-      //this.sandbox = sinon.sandbox();
+      this.sandbox = sinon.sandbox.create();
       $('#fixtures').append('<div id="view-container"></div>');
     });
     afterEach(function() {
       $('#fixtures').empty();
-      //this.sandbox.restore();
+      this.sandbox.restore();
     });
 
     describe('#init', function () {
