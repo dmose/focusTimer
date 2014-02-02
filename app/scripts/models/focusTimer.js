@@ -15,7 +15,8 @@ focusTimer.Models = focusTimer.Models || {};
     },
 
     initialize: function () {
-      this.update = this._update.bind(this);
+      // makes it easy to test the bound version with Sinon
+      this.update = this._updateUnbound.bind(this);
     },
 
     start: function() {
@@ -29,9 +30,7 @@ focusTimer.Models = focusTimer.Models || {};
       this.set('state', 'stopped');
     },
 
-    _update: function() {
-      console.log('in update');
-
+    _updateUnbound: function() {
       if (this.get('state') !== 'running') {
         throw new Error('state must be set to "running" when update is called');
       }
