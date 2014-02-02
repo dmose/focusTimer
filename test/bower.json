@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "chai": "~1.8.0",
-    "mocha": "~1.14.0",
+    "mocha": "~1.17.1",
     "sinon-chai": "~2.5.0",
     "sinonjs": "~1.7.3"
   },

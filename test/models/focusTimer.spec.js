@@ -1,10 +1,15 @@
-/*global describe, beforeEach, expect, it, focusTimer */
+/*global describe, beforeEach, afterEach, expect, it, focusTimer, sinon */
 
 describe('FocusTimer Model', function () {
   'use strict';
 
   beforeEach(function () {
+    this.sandbox = sinon.sandbox.create({useFakeTimers: true});
     this.focusTimer = new focusTimer.Models.FocusTimerModel();
+  });
+
+  afterEach(function() {
+    this.sandbox.restore();
   });
 
   describe('construction', function() {
@@ -33,6 +38,22 @@ describe('FocusTimer Model', function () {
 
       this.focusTimer.start();
     });
+
+
+    it('should cause update to be called again after 1 and 2 seconds',
+      function() {
+        this.sandbox.stub(this.focusTimer, "update");
+
+        this.focusTimer.start();
+        sinon.assert.calledOnce(this.focusTimer.update);
+
+        this.sandbox.clock.tick(1000);
+        sinon.assert.calledTwice(this.focusTimer.update);
+
+        this.sandbox.clock.tick(1000);
+        sinon.assert.calledThrice(this.focusTimer.update);
+        sinon.assert.calledWithExactly(this.focusTimer.update);
+      });
   });
 
   describe('stop', function() {
@@ -44,10 +65,9 @@ describe('FocusTimer Model', function () {
       expect(this.focusTimer.get('state')).to.equal('stopped');
     });
 
-    it.skip('should cause a running timer to not change timeLeft at the end of the' +
-      ' next interval', function () {
-      // XXX needs sinon to test
-    });
+    // XXX needs sinon to test
+    it('should cause a running timer to not change timeLeft at the end of the' +
+      ' next interval', function () {});
 
   });
 
@@ -75,14 +95,5 @@ describe('FocusTimer Model', function () {
 
       expect(this.focusTimer.get('timeLeft')).to.equal(0);
     });
-
-    it.skip('should be called again after 1 second if the state is "running"',
-      function() {
-        this.focusTimer.set('state', 'running');
-
-        this.focusTimer.update();
-
-        // XXX wants Sinon timers to skip
-      });
   });
 });

@@ -14,18 +14,24 @@ focusTimer.Models = focusTimer.Models || {};
       'timeLeft': 25 * 60
     },
 
+    initialize: function () {
+      this.update = this._update.bind(this);
+    },
+
     start: function() {
       this.set('state', 'running');
       this.update();
-      this._intervalTimer = window.setInterval(this.update.bind(this), 1000);
+      this._intervalTimer = setInterval(this.update, 1000);
     },
 
     stop: function() {
-      window.clearInterval(this._intervalTimer);
+      clearInterval(this._intervalTimer);
       this.set('state', 'stopped');
     },
 
-    update: function() {
+    _update: function() {
+      console.log('in update');
+
       if (this.get('state') !== 'running') {
         throw new Error('state must be set to "running" when update is called');
       }
