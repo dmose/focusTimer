@@ -65,9 +65,20 @@ describe('FocusTimer Model', function () {
       expect(this.focusTimer.get('state')).to.equal('stopped');
     });
 
-    // XXX needs sinon to test
     it('should cause a running timer to not change timeLeft at the end of the' +
-      ' next interval', function () {});
+      ' next interval', function () {
+      this.focusTimer.start();
+
+      this.focusTimer.stop();
+
+      // ensure update will not throw an error when the clock moves forward
+      this.focusTimer.set('state', 'running');
+
+      var lastTimeLeft = this.focusTimer.get('timeLeft');
+      this.sandbox.clock.tick(1000);
+
+      expect(this.focusTimer.get('timeLeft')).to.equal(lastTimeLeft);
+    });
 
   });
 
