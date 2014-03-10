@@ -42,7 +42,7 @@ describe('FocusTimer Model', function () {
 
     it('should cause update to be called again after 1 and 2 seconds',
       function() {
-        this.sandbox.stub(this.focusTimer, "update");
+        this.sandbox.stub(this.focusTimer, 'update');
 
         this.focusTimer.start();
         sinon.assert.calledOnce(this.focusTimer.update);
