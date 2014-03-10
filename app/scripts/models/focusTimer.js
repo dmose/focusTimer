@@ -31,8 +31,10 @@ focusTimer.Models = focusTimer.Models || {};
     },
 
     _updateUnbound: function() {
-      if (this.get('state') !== 'running') {
-        throw new Error('state must be set to "running" when update is called');
+      var state = this.get('state');
+      if (state !== 'running') {
+        throw new Error('state set to ' + state +
+          ' (!= running) on update call');
       }
 
       if (this.get('timeLeft') === 0) {
