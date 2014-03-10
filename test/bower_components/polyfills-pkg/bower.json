@@ -1,0 +1,31 @@
+{
+  "name": "polyfills-pkg",
+  "version": "0.1.2",
+  "homepage": "https://github.com/adamRenny/polyfills-pkg",
+  "authors": [
+    "Adam Ranfelt <adamRenny@gmail.com>"
+  ],
+  "description": "JavaScript Polyfills - set includes Array.indexOf and Function.bind",
+  "main": "dist/polyfills-pkg.js",
+  "keywords": [
+    "polyfill",
+    "array.indexOf",
+    "indexOf",
+    "function.bind",
+    "bind"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "plato",
+    "node_modules",
+    "*.md",
+    "Makefile",
+    "package.json",
+    "Gruntfile.js"
+  ]
+}
