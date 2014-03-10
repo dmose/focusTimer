@@ -7,7 +7,7 @@ Really, just the todo list that I've used as I've worked on each release.
   ** <strike>Stand things up</strike>
   ** <strike>Get Run button working</strike>
   ** <strike>Get Stop button working</strike>
-  ** Implement Sinon.js tests
+  ** <strike>Implement Sinon.js tests</strike>
   ** Implement parameterized defaults
   ** Implement timer expiration behavior
   ** Stand up Fluid.app version
