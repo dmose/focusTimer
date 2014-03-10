@@ -1,18 +1,25 @@
-/*global describe, afterEach, beforeEach, expect, it, focusTimer */
+/*global describe, afterEach, beforeEach, expect, it, focusTimer, Backbone,
+ sinon, _ */
 
 describe('Timer View', function () {
   'use strict';
 
+  var sandbox;
+
   beforeEach(function () {
+
+    sandbox = sinon.sandbox.create();
+
     $('#fixtures').append('<div id="timer-view"></div>');
 
     this.timeLeft = 3 * 60;
 
     this.model = {
       attributes: { state: 'stopped', timeLeft: this.timeLeft },
-      on: function () {},
       get: function (key) {return this.attributes[key];}
     };
+
+    _.extend(this.model, Backbone.Events);
 
     this.timerView = new focusTimer.Views.TimerView({
       el: $('#timer-view').get()[0],
@@ -22,18 +29,24 @@ describe('Timer View', function () {
 
   afterEach(function() {
     $('#fixtures').empty();
+
+    sandbox.restore();
   });
 
   describe('events', function () {
 
     describe('"change" from the model', function() {
 
-      it.skip('should cause the timerView to render', function () {
-        // XXX wants sinon to test
+      it('should cause the timerView to render', function () {
 
+        sandbox.stub(focusTimer.Views.TimerView.prototype, 'render');
         this.timerView = new focusTimer.Views.TimerView({model: this.model});
 
+
         this.model.trigger('change');
+
+        expect(this.timerView.render).to.have.been.calledOnce;
+        expect(this.timerView.render).to.have.been.calledWithExactly();
       });
     });
 
