@@ -7,9 +7,7 @@
     "underscore": "1.x",
     "backbone": "1.x",
     "modernizr": "2.x",
-    "momentjs": "2.x",
-    "countDown.js": "*",
-    "moment-countdown": "*"
+    "momentjs": "2.x"
   },
   "devDependencies": {}
 }
