@@ -10,7 +10,10 @@ describe('Timer View', function () {
 
     sandbox = sinon.sandbox.create();
 
-    $('#fixtures').append('<div id="timer-view"></div>');
+    $('#fixtures').append(
+      '<div id="timer-view">' +
+        '<input id="time-remaining">' +
+      '</div>');
 
     this.timeLeft = 3 * 60;
 
@@ -42,11 +45,51 @@ describe('Timer View', function () {
         sandbox.stub(focusTimer.Views.TimerView.prototype, 'render');
         this.timerView = new focusTimer.Views.TimerView({model: this.model});
 
-
         this.model.trigger('change');
 
         expect(this.timerView.render).to.have.been.calledOnce;
         expect(this.timerView.render).to.have.been.calledWithExactly();
+      });
+    });
+
+    describe('"focus" on the #time-remaining input', function() {
+      it('should stop updating the input so it can be edited', function() {
+        this.timerView.render();
+
+        $('#fixtures #time-remaining').focus();
+        this.model.attributes.timeLeft -= 1;
+        this.model.trigger('change');
+
+        expect($('#fixtures #time-remaining').val()).to.equal(
+          String(this.timeLeft));
+      });
+    });
+
+    describe('"blur" on the #time-remaining input', function() {
+      it('should resume visual updating of the input on change', function () {
+        this.timerView.render();
+        $('#fixtures #time-remaining').focus();
+        this.model.attributes.timeLeft -= 1;
+
+        $('#fixtures #time-remaining').blur();
+        this.model.trigger('change');
+
+        expect($('#fixtures #time-remaining').val()).to.equal(
+          String(this.timeLeft - 1));
+      });
+    });
+
+    describe('"change" on the #time-remaining input', function() {
+      it('should call model.set(inputValue)', function () {
+        this.model.set = sandbox.spy();
+
+        this.timerView.render();
+
+        $('#fixtures #time-remaining').val('555');
+        $('#fixtures #time-remaining').change();
+
+        expect(this.model.set).to.have.been.calledOnce;
+        expect(this.model.set).to.have.been.calledWithExactly('timeLeft', 555);
       });
     });
 

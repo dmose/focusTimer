@@ -9,7 +9,10 @@ focusTimer.Views = focusTimer.Views || {};
 
     // JST['app/scripts/templates/timer.ejs']
     events: {
-      'click #start-stop': '_startStop'
+      'click #start-stop': '_startStop',
+      'focus #time-remaining': '_onInputFocus',
+      'blur #time-remaining': '_onInputBlur',
+      'change #time-remaining': '_onInputChange'
     },
 
     id: 'timer-view',
@@ -17,14 +20,15 @@ focusTimer.Views = focusTimer.Views || {};
     template: _.template([
       '<input id="time-remaining" value="<%= timeLeft %>" class="input-sm">',
       '  <button id="start-stop" class="btn btn-xs">',
-      '    <label class="<% print(this._getLabelClassForState(state)); %>">' +
-        '</label>',
+      '    <label class="<% print(this._getLabelClassForState(state)); %>">',
+      '    </label>',
       '  </button>',
       '</input>'
     ].join('')),
 
     initialize: function() {
       this.listenTo(this.model, 'change', this.render);
+      this._editingMode = false;
     },
 
     _getLabelClassForState: function (state) {
@@ -44,8 +48,23 @@ focusTimer.Views = focusTimer.Views || {};
       }
     },
 
+    _onInputFocus: function (event) {
+      this._editingMode = true;
+    },
+
+    _onInputBlur: function (event) {
+      this._editingMode = false;
+    },
+
+    _onInputChange: function (event) {
+      var val = Number(this.$el.find('#time-remaining').val());
+      this.model.set('timeLeft', val);
+    },
+
     render: function() {
-      this.$el.html(this.template(this.model.attributes));
+      if (!this._editingMode) {
+        this.$el.html(this.template(this.model.attributes));
+      }
 
       return this;
     }

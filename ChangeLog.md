@@ -8,10 +8,12 @@ Really, just the todo list that I've used as I've worked on each release.
    * ~~Get Run button working~~
    * ~~Get Stop button working~~
    * ~~Implement Sinon.js tests~~
-   * Implement parameterized defaults
+   * ~~input of times~~
+   * switch to using minutes
    * Implement timer expiration behavior
    * Stand up Fluid.app version
    * dogfood!
+   * Implement parameterized defaults
    * Find/setup grunt task to auto-create Fluid.app local and remote versions
    * (Finish implementing UI)
    * (Finish styling UI)
