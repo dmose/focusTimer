@@ -8,8 +8,9 @@ Really, just the todo list that I've used as I've worked on each release.
    * ~~Get Run button working~~
    * ~~Get Stop button working~~
    * ~~Implement Sinon.js tests~~
-   * ~~input of times~~
-   * switch to using minutes
+   * ~~Allow updating of time remaining via input widget~~
+   * ~~Only pin major versions of most bower dependencies; update packages~~
+   * Switch to using minutes (probably via moment.js)
    * Implement timer expiration behavior
    * Stand up Fluid.app version
    * dogfood!
