@@ -80,7 +80,7 @@ describe('Timer View', function () {
     });
 
     describe('"change" on the #time-remaining input', function() {
-      it('should call model.set(inputValue)', function () {
+      it('should call model.set("timeLeft", inputValue)', function () {
         this.model.set = sandbox.spy();
 
         this.timerView.render();
