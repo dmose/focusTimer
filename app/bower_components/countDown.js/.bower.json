@@ -9,6 +9,5 @@
   },
   "_source": "git://github.com/limitingfactor/countdown.js.git",
   "_target": "*",
-  "_originalSource": "countDown.js",
-  "_direct": true
+  "_originalSource": "countDown.js"
 }

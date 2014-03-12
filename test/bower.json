@@ -2,11 +2,11 @@
   "name": "focustimer",
   "private": true,
   "dependencies": {
-    "chai": "~1.8.0",
-    "mocha": "~1.17.1",
-    "sinon-chai": "~2.5.0",
-    "sinonjs": "~1.7.3",
-    "polyfills-pkg": "~0.1.2"
+    "chai": "1.x",
+    "mocha": "1.x",
+    "sinon-chai": "2.x",
+    "sinonjs": "1.x",
+    "polyfills-pkg": "0.1.x"
   },
   "devDependencies": {}
 }

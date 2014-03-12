@@ -35,7 +35,6 @@
     "commit": "daa4be425110db5d7c76e1a97e65050d60028789"
   },
   "_source": "git://github.com/adamRenny/polyfills-pkg.git",
-  "_target": "~0.1.2",
-  "_originalSource": "polyfills-pkg",
-  "_direct": true
+  "_target": "0.1.x",
+  "_originalSource": "polyfills-pkg"
 }

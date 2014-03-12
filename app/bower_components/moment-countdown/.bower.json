@@ -9,6 +9,5 @@
   },
   "_source": "git://github.com/icambron/moment-countdown.git",
   "_target": "*",
-  "_originalSource": "moment-countdown",
-  "_direct": true
+  "_originalSource": "moment-countdown"
 }
