@@ -1,10 +1,11 @@
-/*global focusTimer, Backbone, _ */
+/*global focusTimer, Backbone, _, duratiform */
 
 focusTimer.Views = focusTimer.Views || {};
 
 (function () {
   'use strict';
 
+  //noinspection JSUnusedGlobalSymbols
   focusTimer.Views.TimerView = Backbone.View.extend({
 
     // JST['app/scripts/templates/timer.ejs']
@@ -18,7 +19,8 @@ focusTimer.Views = focusTimer.Views || {};
     id: 'timer-view',
 
     template: _.template([
-      '<input id="time-remaining" value="<%= timeLeft %>" class="input-sm">',
+      '<input id="time-remaining" ',
+      '  value="<% print(this._formatTime(timeLeft)) %>" class="input-sm">',
       '  <button id="start-stop" class="btn btn-xs">',
       '    <label class="<% print(this._getLabelClassForState(state)); %>">',
       '    </label>',
@@ -59,6 +61,10 @@ focusTimer.Views = focusTimer.Views || {};
     _onInputChange: function (event) {
       var val = Number(this.$el.find('#time-remaining').val());
       this.model.set('timeLeft', val);
+    },
+
+    _formatTime: function(seconds) {
+      return duratiform.format(1000 * seconds, 'm:ss');
     },
 
     render: function() {

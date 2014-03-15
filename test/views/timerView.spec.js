@@ -1,5 +1,6 @@
 /*global describe, afterEach, beforeEach, expect, it, focusTimer, Backbone,
  sinon, _ */
+/*jshint expr:true */
 
 describe('Timer View', function () {
   'use strict';
@@ -16,6 +17,8 @@ describe('Timer View', function () {
       '</div>');
 
     this.timeLeft = 3 * 60;
+    this.formattedTimeLeft = '3:00';
+    this.decrementedFormattedTimeLeft = '2:59';
 
     this.model = {
       attributes: { state: 'stopped', timeLeft: this.timeLeft },
@@ -42,12 +45,15 @@ describe('Timer View', function () {
 
       it('should cause the timerView to render', function () {
 
+        //noinspection JSAccessibilityCheck
         sandbox.stub(focusTimer.Views.TimerView.prototype, 'render');
         this.timerView = new focusTimer.Views.TimerView({model: this.model});
 
         this.model.trigger('change');
 
+        //noinspection BadExpressionStatementJS
         expect(this.timerView.render).to.have.been.calledOnce;
+        //noinspection JSUnresolvedVariable
         expect(this.timerView.render).to.have.been.calledWithExactly();
       });
     });
@@ -61,7 +67,7 @@ describe('Timer View', function () {
         this.model.trigger('change');
 
         expect($('#fixtures #time-remaining').val()).to.equal(
-          String(this.timeLeft));
+          this.formattedTimeLeft);
       });
     });
 
@@ -75,7 +81,7 @@ describe('Timer View', function () {
         this.model.trigger('change');
 
         expect($('#fixtures #time-remaining').val()).to.equal(
-          String(this.timeLeft - 1));
+          this.decrementedFormattedTimeLeft);
       });
     });
 
@@ -88,6 +94,7 @@ describe('Timer View', function () {
         $('#fixtures #time-remaining').val('555');
         $('#fixtures #time-remaining').change();
 
+        //noinspection BadExpressionStatementJS
         expect(this.model.set).to.have.been.calledOnce;
         expect(this.model.set).to.have.been.calledWithExactly('timeLeft', 555);
       });
@@ -175,15 +182,14 @@ describe('Timer View', function () {
       });
     });
 
-    // TODO need formatting test here once we use durations, and the countdown
-    // plugin
-    it('should set the value of the input to the time remaining', function() {
-      this.timerView.render();
+    it('should set the value of the input to the formatted time remaining',
+      function() {
+        this.timerView.render();
 
-      var input = $('#fixtures #time-remaining');
+        var input = $('#fixtures #time-remaining');
 
-      expect(Number(input.prop('value'))).to.equal(this.timeLeft);
-    });
+        expect(input.prop('value')).to.equal(this.formattedTimeLeft);
+      });
   });
 
 });
