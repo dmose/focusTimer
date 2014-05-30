@@ -51,7 +51,7 @@ describe('Timer View', function () {
 
         this.model.trigger('change');
 
-        //noinspection BadExpressionStatementJS
+        //noinspection BadExpressionStatementJS,JSUnresolvedVariable
         expect(this.timerView.render).to.have.been.calledOnce;
         //noinspection JSUnresolvedVariable
         expect(this.timerView.render).to.have.been.calledWithExactly();
@@ -94,8 +94,9 @@ describe('Timer View', function () {
         $('#fixtures #time-remaining').val('555');
         $('#fixtures #time-remaining').change();
 
-        //noinspection BadExpressionStatementJS
+        //noinspection BadExpressionStatementJS,JSUnresolvedVariable
         expect(this.model.set).to.have.been.calledOnce;
+        //noinspection JSUnresolvedVariable
         expect(this.model.set).to.have.been.calledWithExactly('timeLeft', 555);
       });
     });
