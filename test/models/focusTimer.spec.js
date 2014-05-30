@@ -31,15 +31,6 @@ describe('FocusTimer Model', function () {
       expect(this.focusTimer.get('state')).to.equal('running');
     });
 
-    it('should call #update', function(done) {
-      this.focusTimer.update = function() {
-        done();
-      };
-
-      this.focusTimer.start();
-    });
-
-
     it('should cause update to be called again after 1 and 2 seconds',
       function() {
         this.sandbox.stub(this.focusTimer, 'update');
@@ -56,7 +47,7 @@ describe('FocusTimer Model', function () {
       });
   });
 
-  describe('stop', function() {
+  describe('#stop', function() {
     it('should set the timer state to "stopped"', function() {
       this.focusTimer.set('state', 'running');
 
