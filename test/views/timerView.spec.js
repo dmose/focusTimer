@@ -22,7 +22,9 @@ describe('Timer View', function () {
 
     this.model = {
       attributes: { state: 'stopped', timeLeft: this.timeLeft },
-      get: function (key) {return this.attributes[key];}
+      get: function (key) {return this.attributes[key];},
+      start: sandbox.spy(),
+      stop: sandbox.spy()
     };
 
     _.extend(this.model, Backbone.Events);
@@ -59,15 +61,16 @@ describe('Timer View', function () {
     });
 
     describe('"focus" on the #time-remaining input', function() {
+
       it('should stop updating the input so it can be edited', function() {
         this.timerView.render();
 
-        $('#fixtures #time-remaining').focus();
+        $('#fixtures #time-remaining').trigger("focus");
         this.model.attributes.timeLeft -= 1;
         this.model.trigger('change');
 
-        expect($('#fixtures #time-remaining').val()).to.equal(
-          this.formattedTimeLeft);
+        expect($('#fixtures #time-remaining').val()).to
+          .equal(this.formattedTimeLeft);
       });
     });
 
@@ -104,31 +107,25 @@ describe('Timer View', function () {
     describe('"click" on the #start-stop button', function () {
 
       it('should call start on the model if its state is "stopped"',
-        function (done) {
+        function () {
           this.model.attributes.state = 'stopped';
-          this.model.start = verify;
           this.timerView.render();
 
           $('#fixtures #start-stop').trigger('click');
-
-          function verify() {
-            expect(true).to.equal(true);
-            done();
-          }
+          
+          sinon.assert.calledOnce(this.model.start);
+          sinon.assert.calledWithExactly(this.model.start);
         });
 
       it('should call stop on the model if its state is "running"',
-        function(done) {
+        function() {
           this.model.attributes.state = 'running';
-          this.model.stop = verify;
           this.timerView.render();
 
           $('#fixtures #start-stop').trigger('click');
 
-          function verify() {
-            expect(true).to.equal(true);
-            done();
-          }
+          sinon.assert.calledOnce(this.model.stop);
+          sinon.assert.calledWithExactly(this.model.stop);
         });
     });
   });
