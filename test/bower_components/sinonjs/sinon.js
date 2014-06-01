@@ -1,5 +1,5 @@
 /**
- * Sinon.JS 1.8.2, 2014/02/11
+ * Sinon.JS 1.9.1, 2014/04/03
  *
  * @author Christian Johansen (christian@cjohansen.no)
  * @author Contributors: https://github.com/cjohansen/Sinon.JS/blob/master/AUTHORS
@@ -655,6 +655,10 @@ var sinon = (function (formatio) {
         return typeof obj === "function" || !!(obj && obj.constructor && obj.call && obj.apply);
     }
 
+    function isReallyNaN(val) {
+        return typeof val === 'number' && isNaN(val);
+    }
+
     function mirrorProperties(target, source) {
         for (var prop in source) {
             if (!hasOwn.call(target, prop)) {
@@ -756,8 +760,13 @@ var sinon = (function (formatio) {
             if (sinon.match && sinon.match.isMatcher(a)) {
                 return a.test(b);
             }
-            if (typeof a != "object" || typeof b != "object") {
-                return a === b;
+
+            if (typeof a != 'object' || typeof b != 'object') {
+                if (isReallyNaN(a) && isReallyNaN(b)) {
+                    return true;
+                } else {
+                    return a === b;
+                }
             }
 
             if (isElement(a) || isElement(b)) {
@@ -770,6 +779,11 @@ var sinon = (function (formatio) {
 
             if ((a === null && b !== null) || (a !== null && b === null)) {
                 return false;
+            }
+
+            if (a instanceof RegExp && b instanceof RegExp) {
+              return (a.source === b.source) && (a.global === b.global) &&
+                (a.ignoreCase === b.ignoreCase) && (a.multiline === b.multiline);
             }
 
             var aString = Object.prototype.toString.call(a);
@@ -1047,8 +1061,10 @@ var sinon = (function (formatio) {
     }
 
     matcher.or = function (m2) {
-        if (!isMatcher(m2)) {
+        if (!arguments.length) {
             throw new TypeError("Matcher expected");
+        } else if (!isMatcher(m2)) {
+            m2 = match(m2);
         }
         var m1 = this;
         var or = sinon.create(matcher);
@@ -1060,8 +1076,10 @@ var sinon = (function (formatio) {
     };
 
     matcher.and = function (m2) {
-        if (!isMatcher(m2)) {
+        if (!arguments.length) {
             throw new TypeError("Matcher expected");
+        } else if (!isMatcher(m2)) {
+            m2 = match(m2);
         }
         var m1 = this;
         var and = sinon.create(matcher);
@@ -2947,6 +2965,13 @@ if (typeof sinon == "undefined") {
 }
 
 (function (global) {
+    // node expects setTimeout/setInterval to return a fn object w/ .ref()/.unref()
+    // browsers, a number.
+    // see https://github.com/cjohansen/Sinon.JS/pull/436
+    var timeoutResult = setTimeout(function() {}, 0);
+    var addTimerReturnsObject = typeof timeoutResult === 'object';
+    clearTimeout(timeoutResult);
+
     var id = 1;
 
     function addTimer(args, recurring) {
@@ -2976,7 +3001,16 @@ if (typeof sinon == "undefined") {
             this.timeouts[toId].interval = delay;
         }
 
-        return toId;
+        if (addTimerReturnsObject) {
+            return {
+                id: toId,
+                ref: function() {},
+                unref: function() {}
+            };
+        }
+        else {
+            return toId;
+        }
     }
 
     function parseTime(str) {
@@ -3348,6 +3382,25 @@ if (typeof sinon == "undefined") {
         }
     };
 
+    sinon.ProgressEvent = function ProgressEvent(type, progressEventRaw, target) {
+        this.initEvent(type, false, false, target);
+        this.loaded = progressEventRaw.loaded || null;
+        this.total = progressEventRaw.total || null;
+    };
+
+    sinon.ProgressEvent.prototype = new sinon.Event();
+
+    sinon.ProgressEvent.prototype.constructor =  sinon.ProgressEvent;
+
+    sinon.CustomEvent = function CustomEvent(type, customData, target) {
+        this.initEvent(type, false, false, target);
+        this.detail = customData.detail || null;
+    };
+
+    sinon.CustomEvent.prototype = new sinon.Event();
+
+    sinon.CustomEvent.prototype.constructor =  sinon.CustomEvent;
+
     sinon.EventTarget = {
         addEventListener: function addEventListener(event, listener) {
             this.eventListeners = this.eventListeners || {};
@@ -3458,7 +3511,7 @@ if (typeof sinon == "undefined") {
                 var listener = xhr["on" + eventName];
 
                 if (listener && typeof listener == "function") {
-                    listener(event);
+                    listener.call(this, event);
                 }
             });
         }
@@ -3597,6 +3650,12 @@ if (typeof sinon == "undefined") {
     };
     FakeXMLHttpRequest.useFilters = false;
 
+    function verifyRequestOpened(xhr) {
+        if (xhr.readyState != FakeXMLHttpRequest.OPENED) {
+            throw new Error("INVALID_STATE_ERR - " + xhr.readyState);
+        }
+    }
+
     function verifyRequestSent(xhr) {
         if (xhr.readyState == FakeXMLHttpRequest.DONE) {
             throw new Error("Request done");
@@ -3662,7 +3721,7 @@ if (typeof sinon == "undefined") {
                     this.dispatchEvent(new sinon.Event("loadend", false, false, this));
                     this.upload.dispatchEvent(new sinon.Event("load", false, false, this));
                     if (supportsProgress) {
-                        this.upload.dispatchEvent(new ProgressEvent("progress", {loaded: 100, total: 100}));
+                        this.upload.dispatchEvent(new sinon.ProgressEvent('progress', {loaded: 100, total: 100}));
                     }
                     break;
             }
@@ -3684,6 +3743,7 @@ if (typeof sinon == "undefined") {
 
         // Helps testing
         setResponseHeaders: function setResponseHeaders(headers) {
+            verifyRequestOpened(this);
             this.responseHeaders = {};
 
             for (var header in headers) {
@@ -3829,13 +3889,13 @@ if (typeof sinon == "undefined") {
 
         uploadProgress: function uploadProgress(progressEventRaw) {
             if (supportsProgress) {
-                this.upload.dispatchEvent(new ProgressEvent("progress", progressEventRaw));
+                this.upload.dispatchEvent(new sinon.ProgressEvent("progress", progressEventRaw));
             }
         },
 
         uploadError: function uploadError(error) {
             if (supportsCustomEvent) {
-                this.upload.dispatchEvent(new CustomEvent("error", {"detail": error}));
+                this.upload.dispatchEvent(new sinon.CustomEvent("error", {"detail": error}));
             }
         }
     });
@@ -4276,8 +4336,9 @@ if (typeof module !== 'undefined' && module.exports) {
             return;
         }
 
-        if (config.injectInto && !(key in config.injectInto) ) {
+        if (config.injectInto && !(key in config.injectInto)) {
             config.injectInto[key] = value;
+            sandbox.injectedKeys.push(key);
         } else {
             push.call(sandbox.args, value);
         }
@@ -4340,6 +4401,20 @@ if (typeof module !== 'undefined' && module.exports) {
             return obj;
         },
 
+        restore: function () {
+            sinon.collection.restore.apply(this, arguments);
+            this.restoreContext();
+        },
+
+        restoreContext: function () {
+            if (this.injectedKeys) {
+                for (var i = 0, j = this.injectedKeys.length; i < j; i++) {
+                    delete this.injectInto[this.injectedKeys[i]];
+                }
+                this.injectedKeys = [];
+            }
+        },
+
         create: function (config) {
             if (!config) {
                 return sinon.create(sinon.sandbox);
@@ -4347,6 +4422,8 @@ if (typeof module !== 'undefined' && module.exports) {
 
             var sandbox = prepareSandboxFromConfig(config);
             sandbox.args = sandbox.args || [];
+            sandbox.injectedKeys = [];
+            sandbox.injectInto = config.injectInto;
             var prop, value, exposed = sandbox.inject({});
 
             if (config.properties) {
@@ -4694,6 +4771,20 @@ if (typeof module !== 'undefined' && module.exports) {
             }
 
             return target;
+        },
+
+        match: function match(actual, expectation) {
+            var matcher = sinon.match(expectation);
+            if (matcher.test(actual)) {
+                assert.pass("match");
+            } else {
+                var formatted = [
+                    "expected value to match",
+                    "    expected = " + sinon.format(expectation),
+                    "    actual = " + sinon.format(actual)
+                ]
+                failAssertion(this, formatted.join("\n"));
+            }
         }
     };
 

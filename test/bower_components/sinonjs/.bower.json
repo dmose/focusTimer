@@ -1,6 +1,6 @@
 {
   "name": "sinonjs",
-  "version": "1.8.2",
+  "version": "1.9.1",
   "main": "sinon.js",
   "ignore": [
     "**/.*",
@@ -8,11 +8,11 @@
     "components"
   ],
   "homepage": "https://github.com/blittle/sinon.js",
-  "_release": "1.8.2",
+  "_release": "1.9.1",
   "_resolution": {
     "type": "version",
-    "tag": "v1.8.2",
-    "commit": "586407c935cf8b943dab4f94ac5f1176aaa41223"
+    "tag": "v1.9.1",
+    "commit": "2c86cf62cf8197e66a86432134c0d0f2dac8f0a6"
   },
   "_source": "git://github.com/blittle/sinon.js.git",
   "_target": "1.x",
