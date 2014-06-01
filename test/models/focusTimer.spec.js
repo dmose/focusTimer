@@ -89,6 +89,22 @@ describe('FocusTimer Model', function () {
       expect(this.focusTimer.get('state')).to.equal('expired');
     });
 
+    it('should call this.stop() if timeLeft is 0', function() {
+
+      this.sandbox.stub(this.focusTimer, "stop");
+      this.focusTimer.set('state', 'running');
+      this.focusTimer.set('timeLeft', 0);
+
+      this.focusTimer.update();
+
+      sinon.assert.calledOnce(this.focusTimer.stop);
+      sinon.assert.calledWithExactly(this.focusTimer.stop);
+
+      // XXX this test is written wrong, as always passes, even if I break the
+      // function by not using this.stop.call()
+      sinon.assert.calledOn(this.focusTimer.stop, this.focusTimer);
+    });
+
     it('should decrement the timeLeft attribute', function () {
       this.focusTimer.set('timeLeft', 1);
       this.focusTimer.set('state', 'running');

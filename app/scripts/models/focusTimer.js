@@ -38,6 +38,7 @@ focusTimer.Models = focusTimer.Models || {};
       }
 
       if (this.get('timeLeft') === 0) {
+        this.stop.call(this);
         this.set('state', 'expired');
       }
 
