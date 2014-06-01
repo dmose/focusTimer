@@ -4,7 +4,6 @@
 
 describe('Timer View', function () {
   'use strict';
-
   var sandbox;
 
   beforeEach(function () {
@@ -89,7 +88,7 @@ describe('Timer View', function () {
     });
 
     describe('"change" on the #time-remaining input', function() {
-      it('should call model.set("timeLeft", inputValue)', function () {
+      it('should call model.set("timeLeft", inputValue * 60)', function () {
         this.model.set = sandbox.spy();
 
         this.timerView.render();
@@ -100,7 +99,8 @@ describe('Timer View', function () {
         //noinspection BadExpressionStatementJS,JSUnresolvedVariable
         expect(this.model.set).to.have.been.calledOnce;
         //noinspection JSUnresolvedVariable
-        expect(this.model.set).to.have.been.calledWithExactly('timeLeft', 555);
+        expect(this.model.set).to.have.been.calledWithExactly('timeLeft',
+            555 * 60);
       });
     });
 

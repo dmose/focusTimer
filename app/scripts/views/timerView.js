@@ -60,7 +60,11 @@ focusTimer.Views = focusTimer.Views || {};
 
     _onInputChange: function (event) {
       var val = Number(this.$el.find('#time-remaining').val());
-      this.model.set('timeLeft', val);
+      this.model.set('timeLeft', this._convertMinsToSecs(val));
+    },
+
+    _convertMinsToSecs: function (secs) {
+      return 60 * secs;
     },
 
     _formatTime: function(seconds) {
