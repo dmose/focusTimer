@@ -4,10 +4,9 @@ This is nominally a roadmap, but, really, it's just an evolving TODO list.
 Anyone who wants to take a run at doing one of those these should feel free!
 
 #### cleanup
-
-  * use js-fixtures (or Anton's thing?) to TDD backbone views
   * TDD to Backbone
-  * explore polymer
+  * use js-fixtures (or Anton's thing?) to TDD backbone views
+  * explore polymer/react/famous/phonegap
 
 #### features
   * make it work offline
@@ -16,7 +15,7 @@ Anyone who wants to take a run at doing one of those these should feel free!
   * consider transitions
   * review Fluid APIs
   * simple notification audio
-  * port to B2G
+  * implement cross-device timer using firebase
 
 #### misc
   * add one-time snooze button
