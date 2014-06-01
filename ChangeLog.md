@@ -11,7 +11,10 @@ Really, just the todo list that I've used as I've worked on each release.
    * ~~Allow updating of time remaining via input widget~~
    * ~~Only pin major versions of most bower dependencies; update packages~~
    * ~~Switch to input in minutes~~
-   * Implement timer expiration behavior
+   * ~~Stop firing update and asserting after timer expires~~
+   * Implement timer color changes
+   * Move run button to the left
+   * Add time buttons in order of usage frequency to the write
    * Stand up Fluid.app version
    * dogfood!
    * Implement parameterized defaults
