@@ -10,7 +10,7 @@ focusTimer.Models = focusTimer.Models || {};
     url: '',
 
     defaults: {
-      'state': 'stopped',
+      'state': "stopped",
       'timeLeft': 25 * 60
     },
 
