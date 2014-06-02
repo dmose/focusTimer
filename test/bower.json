@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "chai": "1.x",
+    "chai-jquery": "1.x",
     "mocha": "1.x",
     "sinon-chai": "2.x",
     "sinonjs": "1.x",

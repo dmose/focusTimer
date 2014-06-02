@@ -20,9 +20,15 @@
       mocha.setup('bdd');
     </script>
 
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/duratiform/dist/duratiform.js"></script>
+
     <script src="bower_components/sinonjs/sinon.js"></script>
     <script src="bower_components/chai/chai.js"></script>
     <script src="bower_components/sinon-chai/lib/sinon-chai.js"></script>
+    <script src="bower_components/chai-jquery/chai-jquery.js"></script>
     <script>
         var assert = chai.assert;
         var expect = chai.expect;
@@ -31,11 +37,6 @@
         // give the test modules an attach point
         window.focusTimer = {};
     </script>
-
-    <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/backbone/backbone.js"></script>
-    <script src="bower_components/duratiform/dist/duratiform.js"></script>
 
     <!-- include source files here... -->
     <script src="scripts/main.js"></script>
