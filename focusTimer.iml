@@ -10,10 +10,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sass-stdlib" level="application" />
-    <orderEntry type="library" name="Node.js v0.10.26 Core Modules" level="application" />
     <orderEntry type="library" name="bower dependencies" level="project" />
     <orderEntry type="library" name="Node.js Dependencies for focusTimer" level="project" />
     <orderEntry type="library" name="bower dev dependencies" level="project" />
+    <orderEntry type="library" name="Node.js v0.10.28 Core Modules" level="application" />
   </component>
 </module>
 
