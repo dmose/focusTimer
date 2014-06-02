@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
+  <component name="CompassSettings">
+    <option name="compassExecutableFilePath" value="/usr/bin/compass" />
+    <option name="compassSupportEnabled" value="true" />
+    <option name="importPaths">
+      <list>
+        <option value="/Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets" />
+        <option value="/Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets" />
+      </list>
+    </option>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/test/bower_components" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/app/bower_components/sass-bootstrap/lib" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/app/bower_components/sass-bootstrap" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -14,6 +26,7 @@
     <orderEntry type="library" name="Node.js Dependencies for focusTimer" level="project" />
     <orderEntry type="library" name="bower dev dependencies" level="project" />
     <orderEntry type="library" name="Node.js v0.10.28 Core Modules" level="application" />
+    <orderEntry type="library" name="compass-library" level="project" />
   </component>
 </module>
 
