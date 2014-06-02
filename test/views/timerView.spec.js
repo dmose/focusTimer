@@ -21,9 +21,10 @@ describe('Timer View', function () {
 
     this.model = {
       attributes: { state: 'stopped', timeLeft: this.timeLeft },
-      get: function (key) {return this.attributes[key];},
+      get: function (key) { return this.attributes[key]; },
       start: sandbox.spy(),
-      stop: sandbox.spy()
+      stop: sandbox.spy(),
+      set: function(key, val) { this.attributes[key] = val; }
     };
 
     _.extend(this.model, Backbone.Events);
@@ -38,13 +39,15 @@ describe('Timer View', function () {
     $('#fixtures').empty();
 
     sandbox.restore();
+
+    $('body').removeClass();
   });
 
   describe('events', function () {
 
     describe('"change" from the model', function() {
 
-      it('should cause the timerView to render', function () {
+      it('should call this.render()', function () {
 
         //noinspection JSAccessibilityCheck
         sandbox.stub(focusTimer.Views.TimerView.prototype, 'render');
@@ -57,6 +60,30 @@ describe('Timer View', function () {
         //noinspection JSUnresolvedVariable
         expect(this.timerView.render).to.have.been.calledWithExactly();
       });
+    });
+
+    describe("change:state from the model", function() {
+      it("should remove the previous 'timer-$state' class on the body element",
+        function () {
+
+          $('body').addClass('timer-sheep');
+          this.model.previous = sandbox.stub().withArgs('state').
+            returns("sheep");
+
+          this.model.trigger('change:state', this.model, 'monkey', {});
+
+          expect($('body')).to.not.have.class('timer-sheep');
+        });
+
+      it("should add the updated 'timer-$state' class to the body element",
+        function() {
+
+          this.model.previous = sandbox.stub().withArgs('state').returns('');
+
+          this.model.trigger('change:state', this.model, 'monkey', {});
+
+          expect($('body')).to.have.class('timer-monkey');
+        });
     });
 
     describe('"focus" on the #time-remaining input', function() {
@@ -112,7 +139,7 @@ describe('Timer View', function () {
           this.timerView.render();
 
           $('#fixtures #start-stop').trigger('click');
-          
+
           sinon.assert.calledOnce(this.model.start);
           sinon.assert.calledWithExactly(this.model.start);
         });

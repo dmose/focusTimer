@@ -9,3 +9,15 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 .label-stop:after {
   content: "Stop"
 }
+
+.timer-expired {
+  background-color: red;
+}
+
+.timer-running {
+  background-color: green;
+}
+
+.timer-stopped {
+  background-color: grey;
+}

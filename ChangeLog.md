@@ -12,7 +12,8 @@ Really, just the todo list that I've used as I've worked on each release.
    * ~~Only pin major versions of most bower dependencies; update packages~~
    * ~~Switch to input in minutes~~
    * ~~Stop firing update and asserting after timer expires~~
-   * Implement timer color changes
+   * ~~Implement timer color changes~~
+   * Add button-state for expired
    * Find/setup grunt task to auto-create Fluid.app local and remote versions
    * Stand up Fluid.app version
    * implement github auto-deploy
