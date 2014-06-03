@@ -43,6 +43,67 @@ describe('Timer View', function () {
     $('body').removeClass();
   });
 
+  describe('#render', function() {
+    it('should return itself for chainability', function() {
+      expect(this.timerView.render()).to.equal(this.timerView);
+    });
+
+    it('should display a #time-remaining input in the #timer-view div',
+      function () {
+        this.timerView.render();
+
+        expect(this.timerView.$('input#time-remaining').length).to.equal(1);
+      }
+    );
+
+    it('should set the value of the input to the formatted time remaining',
+      function() {
+        this.timerView.render();
+
+        var input = $('#fixtures #time-remaining');
+
+        expect(input.prop('value')).to.equal(this.formattedTimeLeft);
+      });
+
+    it('should display a #start-stop button with class btn', function() {
+      this.timerView.render();
+
+      expect(this.timerView.$('button#start-stop.btn').length).to.equal(1);
+    });
+
+    describe('#start-stop button', function () {
+
+      it('should contain a label', function() {
+        this.timerView.render();
+
+        expect($('#fixtures #start-stop label').length).to.equal(1);
+      });
+
+      describe('label', function () {
+
+        it('should have class .label-run when the model state is "stopped"',
+          function() {
+            this.model.attributes.state = 'stopped';
+
+            this.timerView.render();
+
+            expect($('#fixtures #start-stop label').hasClass('label-run')).to.
+              equal(true);
+          });
+
+        it('should have class .label-stop when the model state is "running"',
+          function() {
+            this.model.attributes.state = 'running';
+
+            this.timerView.render();
+
+            expect($('#fixtures #start-stop label').hasClass('label-stop')).to.
+              equal(true);
+          });
+      });
+    });
+  });
+
   describe('events', function () {
 
     describe('"change" from the model', function() {
@@ -155,66 +216,6 @@ describe('Timer View', function () {
           sinon.assert.calledWithExactly(this.model.stop);
         });
     });
-  });
-
-  describe('#render', function() {
-    it('should return itself for chainability', function() {
-      expect(this.timerView.render()).to.equal(this.timerView);
-    });
-
-    it('should display a #time-remaining button in the #timer-view div',
-      function () {
-        this.timerView.render();
-
-        expect(this.timerView.$('input#time-remaining').length).to.equal(1);
-      }
-    );
-
-    it('should display a #start-stop button with class btn', function() {
-      this.timerView.render();
-
-      expect(this.timerView.$('button#start-stop.btn').length).to.equal(1);
-    });
-
-    describe('button', function () {
-      it('should contain a label', function() {
-        this.timerView.render();
-
-        expect($('#fixtures #start-stop label').length).to.equal(1);
-      });
-
-      describe('label', function () {
-
-        it('should have class .label-run when the model state is "stopped"',
-          function() {
-            this.model.attributes.state = 'stopped';
-
-            this.timerView.render();
-
-            expect($('#fixtures #start-stop label').hasClass('label-run')).to.
-              equal(true);
-          });
-
-        it('should have class .label-stop when the model state is "running"',
-          function() {
-            this.model.attributes.state = 'running';
-
-            this.timerView.render();
-
-            expect($('#fixtures #start-stop label').hasClass('label-stop')).to.
-              equal(true);
-          });
-      });
-    });
-
-    it('should set the value of the input to the formatted time remaining',
-      function() {
-        this.timerView.render();
-
-        var input = $('#fixtures #time-remaining');
-
-        expect(input.prop('value')).to.equal(this.formattedTimeLeft);
-      });
   });
 
 });

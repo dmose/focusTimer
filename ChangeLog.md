@@ -13,13 +13,15 @@ Really, just the todo list that I've used as I've worked on each release.
    * ~~Switch to input in minutes~~
    * ~~Stop firing update and asserting after timer expires~~
    * ~~Implement timer color changes~~
+   * Add time buttons in order of usage frequency to the write
    * Add button-state for expired
    * Find/setup grunt task to auto-create Fluid.app local and remote versions
    * Stand up Fluid.app version
    * implement github auto-deploy
    * dogfood!
    * Move run button to the left
-   * Add time buttons in order of usage frequency to the write
+   * Fix centering in buttons
+
 
 #### 0.3.1
   * <strike>Switch to yeoman-based build structure & system.</strike>
