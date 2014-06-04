@@ -102,6 +102,21 @@ describe('Timer View', function () {
           });
       });
     });
+
+    it("should display a #pomodoro button in the view", function() {
+      this.timerView.render();
+
+      expect($("#pomodoro")).to.match("button");
+    });
+
+    describe("#pomodoro button", function() {
+      it("should have class .pomodoro", function() {
+        this.timerView.render();
+
+        expect($("#pomodoro")).to.have.class("pomodoro");
+      });
+    });
+
   });
 
   describe('events', function () {
@@ -147,17 +162,20 @@ describe('Timer View', function () {
         });
     });
 
-    describe('"focus" on the #time-remaining input', function() {
+    describe('"focus" on the #time-remaining input', function(done) {
 
       it('should stop updating the input so it can be edited', function() {
         this.timerView.render();
 
-        $('#fixtures #time-remaining').trigger("focus");
-        this.model.attributes.timeLeft -= 1;
-        this.model.trigger('change');
+        $('#fixtures #time-remaining').triggerHandler("focus");
+        setTimeout(0, function () {
+          this.model.attributes.timeLeft -= 1;
+          this.model.trigger('change');
 
-        expect($('#fixtures #time-remaining').val()).to
-          .equal(this.formattedTimeLeft);
+          expect($('#fixtures #time-remaining').val()).to
+            .equal(this.formattedTimeLeft);
+          done();
+        });
       });
     });
 
