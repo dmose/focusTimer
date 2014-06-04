@@ -25,6 +25,7 @@ focusTimer.Views = focusTimer.Views || {};
       '    <label class="<% print(this._getLabelClassForState(state)); %>">',
       '    </label>',
       '  </button>',
+      '  <button id="pomodoro" class="pomodoro"/>',
       '</input>'
     ].join('')),
 
