@@ -11,6 +11,7 @@ focusTimer.Views = focusTimer.Views || {};
     // JST['app/scripts/templates/timer.ejs']
     events: {
       'click #start-stop': '_startStop',
+      'fakeFocus #time-remaining': '_onInputFocus',
       'focus #time-remaining': '_onInputFocus',
       'blur #time-remaining': '_onInputBlur',
       'change #time-remaining': '_onInputChange'
@@ -82,9 +83,12 @@ focusTimer.Views = focusTimer.Views || {};
     },
 
     render: function() {
-      if (!this._editingMode) {
-        this.$el.html(this.template(this.model.attributes));
+
+      if (this._editingMode) {
+        return;
       }
+
+      this.$el.html(this.template(this.model.attributes));
 
       return this;
     }

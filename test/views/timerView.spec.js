@@ -4,7 +4,7 @@
 
 describe('Timer View', function () {
   'use strict';
-  var sandbox;
+  var sandbox, formattedTimeLeft;
 
   beforeEach(function () {
 
@@ -15,8 +15,8 @@ describe('Timer View', function () {
         '<input id="time-remaining">' +
       '</div>');
 
+    formattedTimeLeft = '3:00';
     this.timeLeft = 3 * 60;
-    this.formattedTimeLeft = '3:00';
     this.decrementedFormattedTimeLeft = '2:59';
 
     this.model = {
@@ -62,7 +62,7 @@ describe('Timer View', function () {
 
         var input = $('#fixtures #time-remaining');
 
-        expect(input.prop('value')).to.equal(this.formattedTimeLeft);
+        expect(input.prop('value')).to.equal(formattedTimeLeft);
       });
 
     it('should display a #start-stop button with class btn', function() {
@@ -162,27 +162,28 @@ describe('Timer View', function () {
         });
     });
 
-    describe('"focus" on the #time-remaining input', function(done) {
+    describe('"fakeFocus" on the #time-remaining input', function(done) {
 
-      it('should stop updating the input so it can be edited', function() {
+      it('should stop updating the input so it can be edited', function(done) {
         this.timerView.render();
 
-        $('#fixtures #time-remaining').triggerHandler("focus");
-        setTimeout(0, function () {
-          this.model.attributes.timeLeft -= 1;
-          this.model.trigger('change');
+        $('#fixtures #time-remaining').trigger("fakeFocus");
+        this.model.attributes.timeLeft -= 1;
+        var timerView = this.timerView;
 
+        setTimeout(function () {
+          timerView.render();
           expect($('#fixtures #time-remaining').val()).to
-            .equal(this.formattedTimeLeft);
+            .equal(formattedTimeLeft);
           done();
-        });
+        }, 0);
       });
     });
 
     describe('"blur" on the #time-remaining input', function() {
       it('should resume visual updating of the input on change', function () {
         this.timerView.render();
-        $('#fixtures #time-remaining').focus();
+        $('#fixtures #time-remaining').trigger("fakeFocus");
         this.model.attributes.timeLeft -= 1;
 
         $('#fixtures #time-remaining').blur();
