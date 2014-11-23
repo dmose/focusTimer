@@ -5,12 +5,14 @@ Really, just the todo list that I've used as I've worked on each release.
 
 ### 0.4 - Rewrite using React & Reflux
   * ~~Get basically working~~
-  * ~~check into github
+  * ~~check into github~~
+  
   * Stand up Fluid.app local dev version, local stable version
   * dogfood!
   * Wire up Bootstrap3 CSS
   * Get input working
-  
+  * Swap master and reflux branches 
+  http://stackoverflow.com/questions/2862590/how-to-replace-master-branch-in-git-entirely-from-another-branch  
 
 #### 0.3.2
   * Rewrite using TDD and the yeoman Backbone generator
