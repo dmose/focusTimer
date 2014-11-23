@@ -1,9 +1,0 @@
-{
-  "name": "focustimer",
-  "version": "0.3.1",
-  "dependencies": {
-    "jquery": "~1.10.2",
-    "jqueryui": ">=1.8.7"
-  },
-  "devDependencies": {}
-}
