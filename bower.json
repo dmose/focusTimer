@@ -1,0 +1,12 @@
+{
+  "name": "fluidtimer",
+  "version": "0.0.1",
+  "authors": [
+  	"Dan Mosedale <dmose2@gmail.com>"
+  ],
+  "dependencies": {
+      "jquery": "~2.1.0",
+    "es5-shim": "",
+    "es6-shim": ""
+  }
+}

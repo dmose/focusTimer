@@ -1,0 +1,24 @@
+.timer {
+  width: 3rem;
+}
+
+.widget-wrapper .form-group {
+  display: inline;
+}
+
+body {
+  margin: 0;
+}
+
+.stopped-background {
+  background-color: #fff;
+}
+
+.running-background {
+  background-color: #4bb452;
+}
+
+.expired-background {
+  background-color: #ff0000;
+}
+
