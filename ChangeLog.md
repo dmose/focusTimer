@@ -5,7 +5,7 @@ Really, just the todo list that I've used as I've worked on each release.
 
 ### 0.4 - Rewrite using React & Reflux
   * ~~Get basically working~~
-  * check into github
+  * ~~check into github
   * Stand up Fluid.app local dev version, local stable version
   * dogfood!
   * Wire up Bootstrap3 CSS

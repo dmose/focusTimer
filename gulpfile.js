@@ -61,7 +61,7 @@ gulp.task('scripts', ['lint'], function() {
     return gulp.src(['src/app/app.js'])
             .pipe($.browserify({
                 transform: ['reactify'],
-                extensions: ['.jsx']
+                extensions: ['.js']
             }))
             .on('prebundle', function(bundler) {
                 bundler.require('react');
@@ -99,7 +99,7 @@ gulp.task('browserify', ['lint'], function() {
     return gulp.src(['src/app/app.js'])
             .pipe($.browserify({
                 transform: ['reactify'],
-                extensions: ['.jsx']
+                extensions: ['.js']
             }))
             .on('prebundle', function(bundler) {
                 bundler.require('react');

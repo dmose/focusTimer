@@ -19,19 +19,16 @@ Icon: https://github.com/dmose/focusTimer/raw/e1c8d6219816dcd6de84edb5c88aee667a
 
 * press the Create button
 * after creation completes successfully, click the Launch Now button
-* from the focusTimer menu, select Preferences
 
-* Select Appearance, and make the following changes:
+** From the View menu, select "Hide Status Bar"
+** from the focusTimer menu, select Preferences
 
-Window Style: HUD (Black)
-Window Level: Floating
-Window Opacity: somewhere near 75%
+** Select Appearance, and make the following changes:
 
-* click next, then select:
+  Window Level: Floating
+  Window Opacity: somewhere near 75%
 
-Spaces Behavior: Windows Appear in all Spaces
-When this SSB is not frontmost: Windows are draggable from anywhere
+** click next, then select:
 
-* Quit out of focusTimer
-* Start focusTimer
-* From the View menu, select "Hide Status Bar"
+  Spaces Behavior: Windows Appear in all Spaces
+
