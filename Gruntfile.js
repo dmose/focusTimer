@@ -260,6 +260,12 @@ module.exports = function (grunt) {
     },
     jst: {
       compile: {
+        options: {
+          templateSettings:
+          {
+            variable: 'data'
+          }
+        },
         files: {
           '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
         }

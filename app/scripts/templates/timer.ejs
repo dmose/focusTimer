@@ -1,3 +1,10 @@
-<div id="timer-view">
-  <input id="time-remaining" type=text></input>
-</div>
+<input type="text" id="time-remaining"
+       value="<% print(this._formatTime(data.timeLeft)) %>" class="input-sm">
+  <button id="start-stop" class="btn btn-xs">
+    <label class="<% print(this._getLabelClassForState(data.state)); %>">
+    </label>
+  </button>
+  <button id="pomodoro" class="pomodoro btn btn-xs">
+    <label>25</label>
+  </button>
+</input>

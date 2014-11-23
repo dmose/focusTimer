@@ -4,7 +4,7 @@
   "dependencies": {
     "sass-bootstrap": "3.x",
     "jquery": "2.x",
-    "underscore": "1.x",
+    "lodash": "2.x",
     "backbone": "1.x",
     "modernizr": "2.x",
     "duratiform": "58274338ae"
